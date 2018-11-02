@@ -1,0 +1,9 @@
+ if (_cdata.ObjectType==4)
+                {
+                    string sql=" and id="+_cdata.ObjectID;
+                  CourtAffiliateEventsModel eventModel=new CourtAffiliateEventsDal().GetModel(sql);
+                  if (eventModel!=null)
+                  {
+                      _data.ItemName = _data.ItemName +"["+ eventModel.Name+"]";
+                  }
+                }
