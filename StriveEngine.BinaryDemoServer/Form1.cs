@@ -15,6 +15,7 @@ using StriveEngine.BinaryDemoServer.Dal;
 using StriveEngine.BinaryDemoServer.Model;
 using System.Timers;
 using System.IO.Ports;
+using System.Configuration;
 namespace StriveEngine.BinaryDemoServer
 {
     /*
@@ -39,6 +40,10 @@ namespace StriveEngine.BinaryDemoServer
         private int totalPage = 0;
 
         private int totalLogCount = 0;
+
+        //MES接口
+        string messerver = ConfigurationManager.AppSettings["mesip"];
+        string mesport = ConfigurationManager.AppSettings["mesport"];
 
 
         private System.Timers.Timer _timerSendBarCode;
@@ -855,7 +860,19 @@ namespace StriveEngine.BinaryDemoServer
             //textBox1.Text = Convert.ToString(InputBuf);
 
             ASCIIEncoding encoding = new ASCIIEncoding();
-            richTextBox1.Text = encoding.GetString(InputBuf);
+            string info= encoding.GetString(InputBuf);
+            LogHelper.Log("串口读取条码:" + info);
+          //  richTextBox1.Text = encoding.GetString(InputBuf);
+            richTextBox1.Text += info+"\r\n";
+
+            if (!string.IsNullOrEmpty(info))
+            {
+                #region 调取MES接口
+
+                new MesDaalService().Connect(messerver, int.Parse(mesport), info);
+                #endregion
+            }
+            
         }
         #endregion
 

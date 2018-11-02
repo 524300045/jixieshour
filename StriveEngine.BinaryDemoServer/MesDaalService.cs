@@ -13,15 +13,9 @@ namespace StriveEngine.BinaryDemoServer
         string messerver = ConfigurationManager.AppSettings["mesip"];
         string port = ConfigurationManager.AppSettings["mesport"];
 
-        public string SendData(string para)
-        {
+   
 
-
-
-            return "";
-        }
-
-         void Connect(String server, int port, String message)
+     public      void Connect(String server, int port, String message)
         {
             try
             {
@@ -49,7 +43,7 @@ namespace StriveEngine.BinaryDemoServer
                 client.Close();
 
 
-                LogHelper.Log("Received:" + responseData);
+                LogHelper.Log("MES返回结果:" + responseData);
                 if (responseData.IndexOf("T2")>0)
                 {
                     #region good处理
