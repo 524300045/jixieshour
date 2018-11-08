@@ -77,6 +77,7 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
+    <Compile Include="HexConvert.cs" />
     <Compile Include="LogHelper.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
