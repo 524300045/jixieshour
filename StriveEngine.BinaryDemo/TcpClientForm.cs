@@ -24,10 +24,8 @@ namespace StriveEngine.BinaryDemo
             this.tbIp.Text = "10.5.10.18";
             tbPort.Text = "21347";
 
-      //      this.tbIp.Text = "127.0.0.1";
-        //    tbPort.Text = "9000";
-
-       
+        //   this.tbIp.Text = "127.0.0.1";
+        //  tbPort.Text = "9000";
             IPAddress ipAddress = IPAddress.Any; //IPAddress.Parse("172.16.102.11");
 
         }
@@ -92,7 +90,7 @@ namespace StriveEngine.BinaryDemo
             Connect(tbIp.Text.Trim(),tbMsg.Text.Trim(),int.Parse(tbPort.Text.Trim()));
         }
 
-        static void Connect(String server, String message,int port)
+         void Connect(String server, String message,int port)
         {
             try
             {
@@ -130,8 +128,11 @@ namespace StriveEngine.BinaryDemo
                 Console.WriteLine("Received: {0}", responseData);
                 LogHelper.Log("Received:" + responseData);
                 // Close everything.
+                
                 stream.Close();
                 client.Close();
+
+                this.richTextBox1.Text += responseData + "\r\n";
             }
             catch (ArgumentNullException e)
             {

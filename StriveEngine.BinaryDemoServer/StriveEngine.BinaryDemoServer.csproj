@@ -78,6 +78,12 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="LogHelper.cs" />
+    <Compile Include="LoginForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="LoginForm.Designer.cs">
+      <DependentUpon>LoginForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="MesDaalService.cs" />
     <Compile Include="MesForm.cs">
       <SubType>Form</SubType>
@@ -87,6 +93,7 @@
     </Compile>
     <Compile Include="Model\ClientIpInfoModel.cs" />
     <Compile Include="Model\ClientLogModel.cs" />
+    <Compile Include="Model\ScanBarCodeMesRequest.cs" />
     <Compile Include="MySqlHelper.cs" />
     <Compile Include="PCUserControl.cs">
       <SubType>UserControl</SubType>
@@ -96,6 +103,7 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SeverInfo.cs" />
     <EmbeddedResource Include="EditIPForm.resx">
       <DependentUpon>EditIPForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -104,6 +112,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="LoginForm.resx">
+      <DependentUpon>LoginForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="MesForm.resx">
       <DependentUpon>MesForm.cs</DependentUpon>

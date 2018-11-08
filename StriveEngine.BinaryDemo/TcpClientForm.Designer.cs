@@ -34,6 +34,7 @@
             this.button1 = new System.Windows.Forms.Button();
             this.tbMsg = new System.Windows.Forms.TextBox();
             this.button2 = new System.Windows.Forms.Button();
+            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.SuspendLayout();
             // 
             // tbIp
@@ -63,12 +64,13 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(324, 174);
+            this.button1.Location = new System.Drawing.Point(454, 117);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 3;
             this.button1.Text = "发送数据";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Visible = false;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // tbMsg
@@ -89,11 +91,20 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
             // 
+            // richTextBox1
+            // 
+            this.richTextBox1.Location = new System.Drawing.Point(39, 213);
+            this.richTextBox1.Name = "richTextBox1";
+            this.richTextBox1.Size = new System.Drawing.Size(549, 131);
+            this.richTextBox1.TabIndex = 6;
+            this.richTextBox1.Text = "";
+            // 
             // TcpClientForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(467, 271);
+            this.ClientSize = new System.Drawing.Size(622, 380);
+            this.Controls.Add(this.richTextBox1);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.tbMsg);
             this.Controls.Add(this.button1);
@@ -116,5 +127,6 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.TextBox tbMsg;
         private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.RichTextBox richTextBox1;
     }
 }

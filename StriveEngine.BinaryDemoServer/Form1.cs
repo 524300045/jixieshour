@@ -18,11 +18,7 @@ using System.IO.Ports;
 using System.Configuration;
 namespace StriveEngine.BinaryDemoServer
 {
-    /*
-     * 更多实用组件请访问 www.oraycn.com 或 QQ：168757008。
-     * 
-     * ESFramework 强悍的通信框架、P2P框架、群集平台。OMCS 简单易用的网络语音视频框架。MFile 语音视频录制组件。StriveEngine 轻量级的通信引擎。
-     */
+
     public partial class Form1 : Form
     {
         private ITcpServerEngine tcpServerEngine;
@@ -758,6 +754,7 @@ namespace StriveEngine.BinaryDemoServer
         private void Form1_Load(object sender, EventArgs e)
         {
 
+            SeverInfo.DeviceCode = ConfigurationManager.AppSettings["devicecode"];
 
             List<ClientIpInfoModel> list = new List<ClientIpInfoModel>();
             DataTable dt = new ClientInfoDal().GetDS();
@@ -851,6 +848,7 @@ namespace StriveEngine.BinaryDemoServer
             }
             catch (TimeoutException ex)         //超时处理
             {
+                LogHelper.Log("Comm_DataReceived:" + ex.Message);
                 MessageBox.Show(ex.ToString());
             }
         }
@@ -865,16 +863,29 @@ namespace StriveEngine.BinaryDemoServer
           //  richTextBox1.Text = encoding.GetString(InputBuf);
             richTextBox1.Text += info+"\r\n";
 
+            string paraInfo = GetRequestInfo("", info, "", "", "", "", "", "");
             if (!string.IsNullOrEmpty(info))
             {
                 #region 调取MES接口
-
-                new MesDaalService().Connect(messerver, int.Parse(mesport), info);
+                new MesDaalService().Connect(messerver, int.Parse(mesport), paraInfo);
                 #endregion
             }
             
         }
         #endregion
+        public string GetRequestInfo(string deviceCode, string sn,string step,string workcode,string line,string statusCode,string extendone,string extendtwo)
+        {
+            ScanBarCodeMesRequest request = new ScanBarCodeMesRequest();
+            request.DeviceCode = deviceCode;
+            request.SN = sn;
+            request.STEP = step;
+            request.WorkCode = workcode;
+            request.LineSort = line;
+            request.StatusCode = statusCode;
+            request.ExtendOne = extendone;
+            request.ExtendTwo = extendtwo;
+            return request.DeviceCode + "," + request.SN+","+request.STEP+","+request.WorkCode+","+request.LineSort+",,"+request.StatusCode+","+request.ExtendOne+","+request.ExtendTwo;
+        }
 
     }
 

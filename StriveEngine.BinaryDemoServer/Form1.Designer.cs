@@ -84,6 +84,7 @@
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.richTextBox1 = new System.Windows.Forms.RichTextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.panelPC = new System.Windows.Forms.Panel();
             this.label35 = new System.Windows.Forms.Label();
             this.label34 = new System.Windows.Forms.Label();
@@ -114,7 +115,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.pictureBox1 = new System.Windows.Forms.PictureBox();
             this.toolStripLabel_event = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel_clientCount = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
@@ -134,9 +134,9 @@
             this.tabPage4.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.groupBox3.SuspendLayout();
             this.groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -190,7 +190,7 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1098, 494);
+            this.tabPage1.Size = new System.Drawing.Size(1098, 469);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "客户端状态";
             this.tabPage1.UseVisualStyleBackColor = true;
@@ -309,7 +309,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1098, 398);
+            this.tabPage2.Size = new System.Drawing.Size(1098, 469);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "设备管理";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -441,7 +441,7 @@
             this.tabPage3.Controls.Add(this.splitContainer1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1098, 398);
+            this.tabPage3.Size = new System.Drawing.Size(1098, 469);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "通讯记录";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -470,8 +470,8 @@
             // splitContainer1.Panel2
             // 
             this.splitContainer1.Panel2.Controls.Add(this.dgvLog);
-            this.splitContainer1.Size = new System.Drawing.Size(1098, 398);
-            this.splitContainer1.SplitterDistance = 93;
+            this.splitContainer1.Size = new System.Drawing.Size(1098, 469);
+            this.splitContainer1.SplitterDistance = 109;
             this.splitContainer1.TabIndex = 0;
             // 
             // btnEnd
@@ -593,7 +593,7 @@
             this.dgvLog.Name = "dgvLog";
             this.dgvLog.ReadOnly = true;
             this.dgvLog.RowTemplate.Height = 23;
-            this.dgvLog.Size = new System.Drawing.Size(1098, 301);
+            this.dgvLog.Size = new System.Drawing.Size(1098, 356);
             this.dgvLog.TabIndex = 0;
             this.dgvLog.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvLog_RowPostPaint);
             // 
@@ -688,6 +688,16 @@
             this.groupBox4.Size = new System.Drawing.Size(837, 216);
             this.groupBox4.TabIndex = 2;
             this.groupBox4.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(269, 20);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(135, 50);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox1.TabIndex = 15;
+            this.pictureBox1.TabStop = false;
             // 
             // panelPC
             // 
@@ -1042,15 +1052,6 @@
             this.label5.Text = "Slot 1A";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // pictureBox1
-            // 
-            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(269, 20);
-            this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(135, 50);
-            this.pictureBox1.TabIndex = 15;
-            this.pictureBox1.TabStop = false;
-            // 
             // toolStripLabel_event
             // 
             this.toolStripLabel_event.Name = "toolStripLabel_event";
@@ -1120,9 +1121,9 @@
             this.groupBox5.ResumeLayout(false);
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.groupBox3.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
