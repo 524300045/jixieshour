@@ -18,7 +18,7 @@ namespace StriveEngine.BinaryDemoServer
             Application.SetCompatibleTextRenderingDefault(false);
             log4net.Config.XmlConfigurator.Configure();
             LogHelper.Log("程序启动");
-            Application.Run(new Form1());
+            Application.Run(new Form2());
         }
     }
 }

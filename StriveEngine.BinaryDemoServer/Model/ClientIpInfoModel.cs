@@ -19,6 +19,9 @@ namespace StriveEngine.BinaryDemoServer.Model
 
         public int Timeouts { get; set; }
 
+        /// <summary>
+        /// 0:离线
+        /// </summary>
         public int Status { get; set; }
 
     }

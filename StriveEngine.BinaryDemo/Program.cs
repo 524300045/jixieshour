@@ -20,9 +20,9 @@ namespace StriveEngine.BinaryDemo
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             log4net.Config.XmlConfigurator.Configure();
-            LogHelper.Log("1");
+
           //  Application.Run(new TcpClientForm());
-            Application.Run(new Form1());
+            Application.Run(new Form2());
         }
     }
 }

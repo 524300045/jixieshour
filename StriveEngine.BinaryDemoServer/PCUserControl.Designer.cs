@@ -61,7 +61,7 @@
             this.labelname.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(255)))));
             this.labelname.Location = new System.Drawing.Point(3, 5);
             this.labelname.Name = "labelname";
-            this.labelname.Size = new System.Drawing.Size(87, 23);
+            this.labelname.Size = new System.Drawing.Size(99, 23);
             this.labelname.TabIndex = 14;
             this.labelname.Text = "Test PC2";
             this.labelname.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -83,7 +83,7 @@
             this.Controls.Add(this.label36);
             this.Controls.Add(this.labelname);
             this.Name = "PCUserControl";
-            this.Size = new System.Drawing.Size(93, 52);
+            this.Size = new System.Drawing.Size(110, 74);
             this.ResumeLayout(false);
             this.PerformLayout();
 
