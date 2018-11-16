@@ -1,6 +1,7 @@
 ﻿using MySql.Data.MySqlClient;
 using System;
 using System.Collections.Generic;
+using System.Configuration;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -16,7 +17,11 @@ namespace StriveEngine.BinaryDemoServer
             /// </summary>
         //private string ConnString = ConfigurationManager.AppSettings["ConnectionString"];
         //public static string connectionString = new MySqlConnectionStringBuilder ("localhost", "bird", "root", "sdbird", 8888).AsString;  
-       private static string connectionString = "Server=59.110.156.12;Database=test; User ID=vcps;Password=1qazxs;port=3306;pooling=true";
+    //   private static string connectionString = "Server=59.110.156.12;Database=test; User ID=vcps;Password=1qazxs;port=3306;pooling=true";
+
+       private static string connectionString = ConfigurationManager.ConnectionStrings["ConnectionString"].ConnectionString.ToString();
+
+
         #region ExecuteNonQuery
         //执行SQL语句，返回影响的记录数  
         /// <summary>  

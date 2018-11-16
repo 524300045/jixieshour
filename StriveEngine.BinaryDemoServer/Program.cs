@@ -7,6 +7,7 @@ namespace StriveEngine.BinaryDemoServer
 {
     static class Program
     {
+        
         /// <summary>
         /// 应用程序的主入口点。
         /// </summary>
@@ -17,7 +18,7 @@ namespace StriveEngine.BinaryDemoServer
             Application.SetCompatibleTextRenderingDefault(false);
             log4net.Config.XmlConfigurator.Configure();
             LogHelper.Log("程序启动");
-            Application.Run(new MesForm());
+            Application.Run(new Form1());
         }
     }
 }
