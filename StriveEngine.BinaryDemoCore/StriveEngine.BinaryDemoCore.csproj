@@ -43,6 +43,7 @@
     <Compile Include="MessageHead.cs" />
     <Compile Include="MsgRequestContract.cs" />
     <Compile Include="MsgResponseContract.cs" />
+    <Compile Include="NewMessageType.cs" />
     <Compile Include="RequestContract.cs" />
     <Compile Include="MessageType.cs" />
     <Compile Include="SerializeHelper.cs" />

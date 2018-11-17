@@ -17,5 +17,8 @@ namespace StriveEngine.BinaryDemoCore
                this.Msg = msg;
                this.Code = code;
            }
+
+           public string DeviceCode { get; set; }
+
     }
 }

@@ -19,5 +19,10 @@ namespace StriveEngine.BinaryDemoServer
         public string Code { get; set; }
 
         public string Ip { get; set; }
+
+        /// <summary>
+        /// 是否在线 0:离线 1：在线
+        /// </summary>
+        public int IsOnLine { get; set; }
     }
 }
