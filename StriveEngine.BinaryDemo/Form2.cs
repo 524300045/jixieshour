@@ -80,11 +80,26 @@ namespace StriveEngine.BinaryDemo
             //获取消息类型
             int msgType = BitConverter.ToInt32(bMsg, 4);//消息类型是 从offset=4处开始 的一个整数
 
-            if (msgType==MessageType.ServerResponseBarCode)
+          
+            if (msgType == NewMessageType.SeverReceiveResult)
             {
-                #region 收到服务端返回的条码
+                #region 收到服务端返回的收到结果请求
+
+                string result = "客户端收到服务端返回结果" ;
+                this.ShowResult(result);
+
+
+                #endregion
+            }
+
+            if (msgType==NewMessageType.ServerPlaceDevice)
+            {
+                //收到服务端已经放置好设备
+                #region 服务端收到设备已放置好
+                
+               
                 MsgResponseContract response = (MsgResponseContract)SerializeHelper.DeserializeBytes(bMsg, MessageHead.HeadLength, bMsg.Length - MessageHead.HeadLength);
-                string result = "收到服务端条码:"+response.Msg;
+                string result = "收到服务端条码:" + response.Msg;
                 this.ShowResult(result);
 
                 //客户端发送给服务端收到请求
@@ -109,16 +124,18 @@ namespace StriveEngine.BinaryDemo
                 this.tcpPassiveEngine.PostMessageToServer(reqMessage);
 
                 #endregion
+
             }
-            if (msgType == MessageType.SeverReceiveResult)
+
+            if (msgType == NewMessageType.ServerTakeDevice)
+            { 
+                //服务区已取走设备，不放置新设备
+            }
+
+            if (msgType == NewMessageType.ServerTakeDeviceAndPlaceDevice)
             {
-                #region 收到服务端返回的收到结果请求
+                //服务区取走，并放置新设备
 
-                string result = "客户端收到服务端返回结果" ;
-                this.ShowResult(result);
-
-
-                #endregion
             }
             
         }
@@ -180,7 +197,7 @@ namespace StriveEngine.BinaryDemo
 
             ShowResult("发送结果");
             //发送ready
-            int msgType = MessageType.ClientSendResult;
+            int msgType = NewMessageType.ClientSendResult;
             MsgRequestContract contract = new MsgRequestContract("", "");
             contract.Key = Guid.NewGuid().ToString();
             byte[] bBody = SerializeHelper.SerializeObject(contract);
@@ -222,6 +239,40 @@ namespace StriveEngine.BinaryDemo
             //发送请求消息
             
 
+        }
+
+        private void btnReadOne_Click(object sender, EventArgs e)
+        {
+
+            //发送readdy请求
+
+            string code = tbCode.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(code))
+            {
+                MessageBox.Show("请输入编码");
+                return;
+            }
+            ShowResult("发送Ready请求");
+            //客户端发送ready命令
+            int msgType = NewMessageType.ClientSendReady;
+            MsgRequestContract contract = new MsgRequestContract("", "");
+            contract.Key = Guid.NewGuid().ToString();
+            contract.DeviceCode = code;//设备编码
+
+            byte[] bBody = SerializeHelper.SerializeObject(contract);
+
+            //消息头
+            MessageHead head = new MessageHead(bBody.Length, msgType);
+            byte[] bHead = head.ToStream();
+
+            //构建请求消息
+            byte[] reqMessage = new byte[bHead.Length + bBody.Length];
+            Buffer.BlockCopy(bHead, 0, reqMessage, 0, bHead.Length);
+            Buffer.BlockCopy(bBody, 0, reqMessage, bHead.Length, bBody.Length);
+
+            //发送请求消息
+            this.tcpPassiveEngine.PostMessageToServer(reqMessage);
         }
 
         

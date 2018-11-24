@@ -39,6 +39,7 @@
             this.btnResult = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.tbCode = new System.Windows.Forms.TextBox();
+            this.btnReadOne = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // button3
@@ -95,9 +96,9 @@
             // 
             // rtbInfo
             // 
-            this.rtbInfo.Location = new System.Drawing.Point(362, 9);
+            this.rtbInfo.Location = new System.Drawing.Point(533, 9);
             this.rtbInfo.Name = "rtbInfo";
-            this.rtbInfo.Size = new System.Drawing.Size(320, 336);
+            this.rtbInfo.Size = new System.Drawing.Size(149, 336);
             this.rtbInfo.TabIndex = 18;
             this.rtbInfo.Text = "";
             // 
@@ -109,11 +110,12 @@
             this.btnReady.TabIndex = 19;
             this.btnReady.Text = "发送Ready";
             this.btnReady.UseVisualStyleBackColor = true;
+            this.btnReady.Visible = false;
             this.btnReady.Click += new System.EventHandler(this.btnReady_Click);
             // 
             // btnResult
             // 
-            this.btnResult.Location = new System.Drawing.Point(50, 203);
+            this.btnResult.Location = new System.Drawing.Point(386, 193);
             this.btnResult.Name = "btnResult";
             this.btnResult.Size = new System.Drawing.Size(75, 23);
             this.btnResult.TabIndex = 20;
@@ -138,11 +140,22 @@
             this.tbCode.TabIndex = 21;
             this.tbCode.Text = "001";
             // 
+            // btnReadOne
+            // 
+            this.btnReadOne.Location = new System.Drawing.Point(386, 115);
+            this.btnReadOne.Name = "btnReadOne";
+            this.btnReadOne.Size = new System.Drawing.Size(75, 23);
+            this.btnReadOne.TabIndex = 22;
+            this.btnReadOne.Text = "发送ready";
+            this.btnReadOne.UseVisualStyleBackColor = true;
+            this.btnReadOne.Click += new System.EventHandler(this.btnReadOne_Click);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(694, 369);
+            this.Controls.Add(this.btnReadOne);
             this.Controls.Add(this.tbCode);
             this.Controls.Add(this.btnResult);
             this.Controls.Add(this.btnReady);
@@ -176,6 +189,7 @@
         private System.Windows.Forms.Button btnResult;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox tbCode;
+        private System.Windows.Forms.Button btnReadOne;
     }
 }
 

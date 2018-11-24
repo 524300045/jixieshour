@@ -35,42 +35,6 @@
             this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.rchInfo = new System.Windows.Forms.RichTextBox();
-            this.button_Close = new System.Windows.Forms.Button();
-            this.button_StopListen = new System.Windows.Forms.Button();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.lvIps = new System.Windows.Forms.ListView();
-            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
-            this.button_StartListen = new System.Windows.Forms.Button();
-            this.textBox_port = new System.Windows.Forms.TextBox();
-            this.label1 = new System.Windows.Forms.Label();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.btnAddIp = new System.Windows.Forms.Button();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dgvClientInfo = new System.Windows.Forms.DataGridView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
-            this.btnEnd = new System.Windows.Forms.Button();
-            this.btnNext = new System.Windows.Forms.Button();
-            this.btnPre = new System.Windows.Forms.Button();
-            this.btnFirst = new System.Windows.Forms.Button();
-            this.btnSearch = new System.Windows.Forms.Button();
-            this.dtEnd = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.dtBegin = new System.Windows.Forms.DateTimePicker();
-            this.label3 = new System.Windows.Forms.Label();
-            this.tbDevCode = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.dgvLog = new System.Windows.Forms.DataGridView();
-            this.logName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.logIp = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.content = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.rtbInfo = new System.Windows.Forms.RichTextBox();
@@ -106,11 +70,10 @@
             this.label9 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
-            this.toolStripLabel_event = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel_clientCount = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.toolStripLabel_Port = new System.Windows.Forms.ToolStripLabel();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.btnAddIp = new System.Windows.Forms.Button();
+            this.dgvClientInfo = new System.Windows.Forms.DataGridView();
             this.id = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.name = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.code = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -120,9 +83,51 @@
             this.statusdes = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.editip = new System.Windows.Forms.DataGridViewLinkColumn();
             this.delip = new System.Windows.Forms.DataGridViewLinkColumn();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.splitContainer1 = new System.Windows.Forms.SplitContainer();
+            this.btnEnd = new System.Windows.Forms.Button();
+            this.btnNext = new System.Windows.Forms.Button();
+            this.btnPre = new System.Windows.Forms.Button();
+            this.btnFirst = new System.Windows.Forms.Button();
+            this.btnSearch = new System.Windows.Forms.Button();
+            this.dtEnd = new System.Windows.Forms.DateTimePicker();
+            this.label4 = new System.Windows.Forms.Label();
+            this.dtBegin = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
+            this.tbDevCode = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
+            this.dgvLog = new System.Windows.Forms.DataGridView();
+            this.logName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logCode = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.logIp = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.content = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.rchInfo = new System.Windows.Forms.RichTextBox();
+            this.button_Close = new System.Windows.Forms.Button();
+            this.button_StopListen = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lvIps = new System.Windows.Forms.ListView();
+            this.columnHeader8 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader9 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader6 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnHeader7 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.button_StartListen = new System.Windows.Forms.Button();
+            this.textBox_port = new System.Windows.Forms.TextBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.toolStripLabel_event = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel_clientCount = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.toolStripLabel_Port = new System.Windows.Forms.ToolStripLabel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
+            this.tabPage4.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.groupBox3.SuspendLayout();
+            this.groupBox1.SuspendLayout();
             this.tabPage2.SuspendLayout();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientInfo)).BeginInit();
@@ -132,12 +137,8 @@
             this.splitContainer1.Panel2.SuspendLayout();
             this.splitContainer1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).BeginInit();
-            this.tabPage4.SuspendLayout();
-            this.groupBox5.SuspendLayout();
-            this.groupBox4.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            this.groupBox1.SuspendLayout();
+            this.tabPage1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -178,386 +179,6 @@
             this.tabControl1.Size = new System.Drawing.Size(1106, 495);
             this.tabControl1.TabIndex = 8;
             this.tabControl1.SelectedIndexChanged += new System.EventHandler(this.tabControl1_SelectedIndexChanged);
-            // 
-            // tabPage1
-            // 
-            this.tabPage1.Controls.Add(this.rchInfo);
-            this.tabPage1.Controls.Add(this.button_Close);
-            this.tabPage1.Controls.Add(this.button_StopListen);
-            this.tabPage1.Controls.Add(this.groupBox2);
-            this.tabPage1.Controls.Add(this.button_StartListen);
-            this.tabPage1.Controls.Add(this.textBox_port);
-            this.tabPage1.Controls.Add(this.label1);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1098, 469);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "客户端状态";
-            this.tabPage1.UseVisualStyleBackColor = true;
-            // 
-            // rchInfo
-            // 
-            this.rchInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.rchInfo.Location = new System.Drawing.Point(8, 228);
-            this.rchInfo.Name = "rchInfo";
-            this.rchInfo.Size = new System.Drawing.Size(892, 104);
-            this.rchInfo.TabIndex = 22;
-            this.rchInfo.Text = "";
-            // 
-            // button_Close
-            // 
-            this.button_Close.Enabled = false;
-            this.button_Close.Location = new System.Drawing.Point(415, 16);
-            this.button_Close.Name = "button_Close";
-            this.button_Close.Size = new System.Drawing.Size(75, 23);
-            this.button_Close.TabIndex = 18;
-            this.button_Close.Text = "关闭监听";
-            this.button_Close.UseVisualStyleBackColor = true;
-            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
-            // 
-            // button_StopListen
-            // 
-            this.button_StopListen.Enabled = false;
-            this.button_StopListen.Location = new System.Drawing.Point(305, 16);
-            this.button_StopListen.Name = "button_StopListen";
-            this.button_StopListen.Size = new System.Drawing.Size(75, 23);
-            this.button_StopListen.TabIndex = 17;
-            this.button_StopListen.Text = "停止监听";
-            this.button_StopListen.UseVisualStyleBackColor = true;
-            this.button_StopListen.Click += new System.EventHandler(this.button_StopListen_Click);
-            // 
-            // groupBox2
-            // 
-            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox2.Controls.Add(this.lvIps);
-            this.groupBox2.Location = new System.Drawing.Point(6, 45);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(897, 177);
-            this.groupBox2.TabIndex = 16;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "在线列表";
-            // 
-            // lvIps
-            // 
-            this.lvIps.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader8,
-            this.columnHeader9,
-            this.columnHeader6,
-            this.columnHeader7});
-            this.lvIps.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.lvIps.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
-            this.lvIps.Location = new System.Drawing.Point(3, 17);
-            this.lvIps.Name = "lvIps";
-            this.lvIps.Size = new System.Drawing.Size(891, 157);
-            this.lvIps.TabIndex = 0;
-            this.lvIps.UseCompatibleStateImageBehavior = false;
-            this.lvIps.View = System.Windows.Forms.View.Details;
-            // 
-            // columnHeader8
-            // 
-            this.columnHeader8.Text = "名称";
-            this.columnHeader8.Width = 100;
-            // 
-            // columnHeader9
-            // 
-            this.columnHeader9.Text = "代号";
-            this.columnHeader9.Width = 100;
-            // 
-            // columnHeader6
-            // 
-            this.columnHeader6.Text = "IP";
-            this.columnHeader6.Width = 160;
-            // 
-            // columnHeader7
-            // 
-            this.columnHeader7.Text = "状态";
-            this.columnHeader7.Width = 160;
-            // 
-            // button_StartListen
-            // 
-            this.button_StartListen.Location = new System.Drawing.Point(199, 15);
-            this.button_StartListen.Name = "button_StartListen";
-            this.button_StartListen.Size = new System.Drawing.Size(75, 23);
-            this.button_StartListen.TabIndex = 15;
-            this.button_StartListen.Text = "启动";
-            this.button_StartListen.UseVisualStyleBackColor = true;
-            this.button_StartListen.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // textBox_port
-            // 
-            this.textBox_port.Location = new System.Drawing.Point(93, 16);
-            this.textBox_port.Name = "textBox_port";
-            this.textBox_port.Size = new System.Drawing.Size(100, 21);
-            this.textBox_port.TabIndex = 14;
-            this.textBox_port.Text = "9000";
-            // 
-            // label1
-            // 
-            this.label1.Location = new System.Drawing.Point(11, 15);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(87, 23);
-            this.label1.TabIndex = 13;
-            this.label1.Text = "监听端口：";
-            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
-            // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.panel1);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1098, 469);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "设备管理";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // btnAddIp
-            // 
-            this.btnAddIp.Location = new System.Drawing.Point(17, 3);
-            this.btnAddIp.Name = "btnAddIp";
-            this.btnAddIp.Size = new System.Drawing.Size(75, 23);
-            this.btnAddIp.TabIndex = 1;
-            this.btnAddIp.Text = "新增设备";
-            this.btnAddIp.UseVisualStyleBackColor = true;
-            this.btnAddIp.Visible = false;
-            this.btnAddIp.Click += new System.EventHandler(this.btnAddIp_Click);
-            // 
-            // panel1
-            // 
-            this.panel1.Controls.Add(this.btnAddIp);
-            this.panel1.Controls.Add(this.dgvClientInfo);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(3, 3);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1092, 463);
-            this.panel1.TabIndex = 0;
-            // 
-            // dgvClientInfo
-            // 
-            this.dgvClientInfo.AllowUserToAddRows = false;
-            this.dgvClientInfo.AllowUserToDeleteRows = false;
-            this.dgvClientInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvClientInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvClientInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.id,
-            this.name,
-            this.code,
-            this.ip,
-            this.port,
-            this.timeouts,
-            this.statusdes,
-            this.editip,
-            this.delip});
-            this.dgvClientInfo.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvClientInfo.Location = new System.Drawing.Point(0, 0);
-            this.dgvClientInfo.Name = "dgvClientInfo";
-            this.dgvClientInfo.ReadOnly = true;
-            this.dgvClientInfo.RowTemplate.Height = 23;
-            this.dgvClientInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvClientInfo.Size = new System.Drawing.Size(1092, 463);
-            this.dgvClientInfo.TabIndex = 0;
-            this.dgvClientInfo.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvClientInfo_CellMouseClick);
-            this.dgvClientInfo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvClientInfo_RowPostPaint);
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.splitContainer1);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1098, 469);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "通讯记录";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // splitContainer1
-            // 
-            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
-            this.splitContainer1.Name = "splitContainer1";
-            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
-            // 
-            // splitContainer1.Panel1
-            // 
-            this.splitContainer1.Panel1.Controls.Add(this.btnEnd);
-            this.splitContainer1.Panel1.Controls.Add(this.btnNext);
-            this.splitContainer1.Panel1.Controls.Add(this.btnPre);
-            this.splitContainer1.Panel1.Controls.Add(this.btnFirst);
-            this.splitContainer1.Panel1.Controls.Add(this.btnSearch);
-            this.splitContainer1.Panel1.Controls.Add(this.dtEnd);
-            this.splitContainer1.Panel1.Controls.Add(this.label4);
-            this.splitContainer1.Panel1.Controls.Add(this.dtBegin);
-            this.splitContainer1.Panel1.Controls.Add(this.label3);
-            this.splitContainer1.Panel1.Controls.Add(this.tbDevCode);
-            this.splitContainer1.Panel1.Controls.Add(this.label2);
-            // 
-            // splitContainer1.Panel2
-            // 
-            this.splitContainer1.Panel2.Controls.Add(this.dgvLog);
-            this.splitContainer1.Size = new System.Drawing.Size(1098, 469);
-            this.splitContainer1.SplitterDistance = 109;
-            this.splitContainer1.TabIndex = 0;
-            // 
-            // btnEnd
-            // 
-            this.btnEnd.Location = new System.Drawing.Point(295, 47);
-            this.btnEnd.Name = "btnEnd";
-            this.btnEnd.Size = new System.Drawing.Size(75, 23);
-            this.btnEnd.TabIndex = 5;
-            this.btnEnd.Text = "末页";
-            this.btnEnd.UseVisualStyleBackColor = true;
-            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
-            // 
-            // btnNext
-            // 
-            this.btnNext.Location = new System.Drawing.Point(196, 47);
-            this.btnNext.Name = "btnNext";
-            this.btnNext.Size = new System.Drawing.Size(75, 23);
-            this.btnNext.TabIndex = 5;
-            this.btnNext.Text = "下一页";
-            this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
-            // 
-            // btnPre
-            // 
-            this.btnPre.Location = new System.Drawing.Point(106, 47);
-            this.btnPre.Name = "btnPre";
-            this.btnPre.Size = new System.Drawing.Size(75, 23);
-            this.btnPre.TabIndex = 5;
-            this.btnPre.Text = "上一页";
-            this.btnPre.UseVisualStyleBackColor = true;
-            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
-            // 
-            // btnFirst
-            // 
-            this.btnFirst.Location = new System.Drawing.Point(25, 47);
-            this.btnFirst.Name = "btnFirst";
-            this.btnFirst.Size = new System.Drawing.Size(75, 23);
-            this.btnFirst.TabIndex = 5;
-            this.btnFirst.Text = "首页";
-            this.btnFirst.UseVisualStyleBackColor = true;
-            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
-            // 
-            // btnSearch
-            // 
-            this.btnSearch.Location = new System.Drawing.Point(683, 12);
-            this.btnSearch.Name = "btnSearch";
-            this.btnSearch.Size = new System.Drawing.Size(75, 23);
-            this.btnSearch.TabIndex = 4;
-            this.btnSearch.Text = "查询";
-            this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
-            // 
-            // dtEnd
-            // 
-            this.dtEnd.CustomFormat = "yyyy-MM-dd";
-            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtEnd.Location = new System.Drawing.Point(524, 14);
-            this.dtEnd.Name = "dtEnd";
-            this.dtEnd.Size = new System.Drawing.Size(124, 21);
-            this.dtEnd.TabIndex = 3;
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(501, 20);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(17, 12);
-            this.label4.TabIndex = 2;
-            this.label4.Text = "--";
-            // 
-            // dtBegin
-            // 
-            this.dtBegin.CustomFormat = "yyyy-MM-dd";
-            this.dtBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
-            this.dtBegin.Location = new System.Drawing.Point(362, 14);
-            this.dtBegin.Name = "dtBegin";
-            this.dtBegin.Size = new System.Drawing.Size(124, 21);
-            this.dtBegin.TabIndex = 3;
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(297, 20);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(59, 12);
-            this.label3.TabIndex = 2;
-            this.label3.Text = "查询日期:";
-            // 
-            // tbDevCode
-            // 
-            this.tbDevCode.Location = new System.Drawing.Point(88, 12);
-            this.tbDevCode.Name = "tbDevCode";
-            this.tbDevCode.Size = new System.Drawing.Size(150, 21);
-            this.tbDevCode.TabIndex = 1;
-            // 
-            // label2
-            // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(23, 21);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(59, 12);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "设备代号:";
-            // 
-            // dgvLog
-            // 
-            this.dgvLog.AllowUserToAddRows = false;
-            this.dgvLog.AllowUserToDeleteRows = false;
-            this.dgvLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.logName,
-            this.logCode,
-            this.logIp,
-            this.content,
-            this.createTime});
-            this.dgvLog.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvLog.Location = new System.Drawing.Point(0, 0);
-            this.dgvLog.Name = "dgvLog";
-            this.dgvLog.ReadOnly = true;
-            this.dgvLog.RowTemplate.Height = 23;
-            this.dgvLog.Size = new System.Drawing.Size(1098, 356);
-            this.dgvLog.TabIndex = 0;
-            this.dgvLog.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvLog_RowPostPaint);
-            // 
-            // logName
-            // 
-            this.logName.DataPropertyName = "name";
-            this.logName.HeaderText = "设备名称";
-            this.logName.Name = "logName";
-            this.logName.ReadOnly = true;
-            // 
-            // logCode
-            // 
-            this.logCode.DataPropertyName = "code";
-            this.logCode.HeaderText = "设备代号";
-            this.logCode.Name = "logCode";
-            this.logCode.ReadOnly = true;
-            // 
-            // logIp
-            // 
-            this.logIp.DataPropertyName = "ip";
-            this.logIp.HeaderText = "IP";
-            this.logIp.Name = "logIp";
-            this.logIp.ReadOnly = true;
-            // 
-            // content
-            // 
-            this.content.DataPropertyName = "content";
-            this.content.HeaderText = "内容";
-            this.content.Name = "content";
-            this.content.ReadOnly = true;
-            // 
-            // createTime
-            // 
-            this.createTime.DataPropertyName = "create_time";
-            this.createTime.HeaderText = "日期";
-            this.createTime.Name = "createTime";
-            this.createTime.ReadOnly = true;
             // 
             // tabPage4
             // 
@@ -979,44 +600,64 @@
             this.label5.Text = "Slot 1A";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // toolStripLabel_event
+            // tabPage2
             // 
-            this.toolStripLabel_event.Name = "toolStripLabel_event";
-            this.toolStripLabel_event.Size = new System.Drawing.Size(17, 22);
-            this.toolStripLabel_event.Text = "--";
+            this.tabPage2.Controls.Add(this.panel1);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(1098, 469);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "设备管理";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
-            // toolStripLabel_clientCount
+            // panel1
             // 
-            this.toolStripLabel_clientCount.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.toolStripLabel_clientCount.Name = "toolStripLabel_clientCount";
-            this.toolStripLabel_clientCount.Size = new System.Drawing.Size(71, 22);
-            this.toolStripLabel_clientCount.Text = "在线数量：0";
+            this.panel1.Controls.Add(this.btnAddIp);
+            this.panel1.Controls.Add(this.dgvClientInfo);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(3, 3);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1092, 463);
+            this.panel1.TabIndex = 0;
             // 
-            // toolStripLabel1
+            // btnAddIp
             // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(65, 22);
-            this.toolStripLabel1.Text = "监听端口：";
+            this.btnAddIp.Location = new System.Drawing.Point(17, 3);
+            this.btnAddIp.Name = "btnAddIp";
+            this.btnAddIp.Size = new System.Drawing.Size(75, 23);
+            this.btnAddIp.TabIndex = 1;
+            this.btnAddIp.Text = "新增设备";
+            this.btnAddIp.UseVisualStyleBackColor = true;
+            this.btnAddIp.Visible = false;
+            this.btnAddIp.Click += new System.EventHandler(this.btnAddIp_Click);
             // 
-            // toolStripLabel_Port
+            // dgvClientInfo
             // 
-            this.toolStripLabel_Port.Name = "toolStripLabel_Port";
-            this.toolStripLabel_Port.Size = new System.Drawing.Size(0, 22);
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.toolStripLabel_event,
-            this.toolStripLabel_clientCount,
-            this.toolStripLabel1,
-            this.toolStripLabel_Port});
-            this.toolStrip1.Location = new System.Drawing.Point(0, 495);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(1106, 25);
-            this.toolStrip1.TabIndex = 7;
-            this.toolStrip1.Text = "toolStrip1";
+            this.dgvClientInfo.AllowUserToAddRows = false;
+            this.dgvClientInfo.AllowUserToDeleteRows = false;
+            this.dgvClientInfo.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvClientInfo.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvClientInfo.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.id,
+            this.name,
+            this.code,
+            this.ip,
+            this.port,
+            this.timeouts,
+            this.statusdes,
+            this.editip,
+            this.delip});
+            this.dgvClientInfo.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvClientInfo.Location = new System.Drawing.Point(0, 0);
+            this.dgvClientInfo.Name = "dgvClientInfo";
+            this.dgvClientInfo.ReadOnly = true;
+            this.dgvClientInfo.RowTemplate.Height = 23;
+            this.dgvClientInfo.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvClientInfo.Size = new System.Drawing.Size(1092, 463);
+            this.dgvClientInfo.TabIndex = 0;
+            this.dgvClientInfo.CellMouseClick += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dgvClientInfo_CellMouseClick);
+            this.dgvClientInfo.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvClientInfo_RowPostPaint);
             // 
             // id
             // 
@@ -1094,6 +735,377 @@
             this.delip.ToolTipText = "删除";
             this.delip.UseColumnTextForLinkValue = true;
             // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.splitContainer1);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Size = new System.Drawing.Size(1098, 469);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "通讯记录";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // splitContainer1
+            // 
+            this.splitContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.splitContainer1.Location = new System.Drawing.Point(0, 0);
+            this.splitContainer1.Name = "splitContainer1";
+            this.splitContainer1.Orientation = System.Windows.Forms.Orientation.Horizontal;
+            // 
+            // splitContainer1.Panel1
+            // 
+            this.splitContainer1.Panel1.Controls.Add(this.btnEnd);
+            this.splitContainer1.Panel1.Controls.Add(this.btnNext);
+            this.splitContainer1.Panel1.Controls.Add(this.btnPre);
+            this.splitContainer1.Panel1.Controls.Add(this.btnFirst);
+            this.splitContainer1.Panel1.Controls.Add(this.btnSearch);
+            this.splitContainer1.Panel1.Controls.Add(this.dtEnd);
+            this.splitContainer1.Panel1.Controls.Add(this.label4);
+            this.splitContainer1.Panel1.Controls.Add(this.dtBegin);
+            this.splitContainer1.Panel1.Controls.Add(this.label3);
+            this.splitContainer1.Panel1.Controls.Add(this.tbDevCode);
+            this.splitContainer1.Panel1.Controls.Add(this.label2);
+            // 
+            // splitContainer1.Panel2
+            // 
+            this.splitContainer1.Panel2.Controls.Add(this.dgvLog);
+            this.splitContainer1.Size = new System.Drawing.Size(1098, 469);
+            this.splitContainer1.SplitterDistance = 109;
+            this.splitContainer1.TabIndex = 0;
+            // 
+            // btnEnd
+            // 
+            this.btnEnd.Location = new System.Drawing.Point(295, 47);
+            this.btnEnd.Name = "btnEnd";
+            this.btnEnd.Size = new System.Drawing.Size(75, 23);
+            this.btnEnd.TabIndex = 5;
+            this.btnEnd.Text = "末页";
+            this.btnEnd.UseVisualStyleBackColor = true;
+            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
+            // 
+            // btnNext
+            // 
+            this.btnNext.Location = new System.Drawing.Point(196, 47);
+            this.btnNext.Name = "btnNext";
+            this.btnNext.Size = new System.Drawing.Size(75, 23);
+            this.btnNext.TabIndex = 5;
+            this.btnNext.Text = "下一页";
+            this.btnNext.UseVisualStyleBackColor = true;
+            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
+            // 
+            // btnPre
+            // 
+            this.btnPre.Location = new System.Drawing.Point(106, 47);
+            this.btnPre.Name = "btnPre";
+            this.btnPre.Size = new System.Drawing.Size(75, 23);
+            this.btnPre.TabIndex = 5;
+            this.btnPre.Text = "上一页";
+            this.btnPre.UseVisualStyleBackColor = true;
+            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
+            // 
+            // btnFirst
+            // 
+            this.btnFirst.Location = new System.Drawing.Point(25, 47);
+            this.btnFirst.Name = "btnFirst";
+            this.btnFirst.Size = new System.Drawing.Size(75, 23);
+            this.btnFirst.TabIndex = 5;
+            this.btnFirst.Text = "首页";
+            this.btnFirst.UseVisualStyleBackColor = true;
+            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
+            // 
+            // btnSearch
+            // 
+            this.btnSearch.Location = new System.Drawing.Point(683, 12);
+            this.btnSearch.Name = "btnSearch";
+            this.btnSearch.Size = new System.Drawing.Size(75, 23);
+            this.btnSearch.TabIndex = 4;
+            this.btnSearch.Text = "查询";
+            this.btnSearch.UseVisualStyleBackColor = true;
+            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
+            // 
+            // dtEnd
+            // 
+            this.dtEnd.CustomFormat = "yyyy-MM-dd";
+            this.dtEnd.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtEnd.Location = new System.Drawing.Point(524, 14);
+            this.dtEnd.Name = "dtEnd";
+            this.dtEnd.Size = new System.Drawing.Size(124, 21);
+            this.dtEnd.TabIndex = 3;
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(501, 20);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(17, 12);
+            this.label4.TabIndex = 2;
+            this.label4.Text = "--";
+            // 
+            // dtBegin
+            // 
+            this.dtBegin.CustomFormat = "yyyy-MM-dd";
+            this.dtBegin.Format = System.Windows.Forms.DateTimePickerFormat.Custom;
+            this.dtBegin.Location = new System.Drawing.Point(362, 14);
+            this.dtBegin.Name = "dtBegin";
+            this.dtBegin.Size = new System.Drawing.Size(124, 21);
+            this.dtBegin.TabIndex = 3;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Location = new System.Drawing.Point(297, 20);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(59, 12);
+            this.label3.TabIndex = 2;
+            this.label3.Text = "查询日期:";
+            // 
+            // tbDevCode
+            // 
+            this.tbDevCode.Location = new System.Drawing.Point(88, 12);
+            this.tbDevCode.Name = "tbDevCode";
+            this.tbDevCode.Size = new System.Drawing.Size(150, 21);
+            this.tbDevCode.TabIndex = 1;
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Location = new System.Drawing.Point(23, 21);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(59, 12);
+            this.label2.TabIndex = 0;
+            this.label2.Text = "设备代号:";
+            // 
+            // dgvLog
+            // 
+            this.dgvLog.AllowUserToAddRows = false;
+            this.dgvLog.AllowUserToDeleteRows = false;
+            this.dgvLog.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dgvLog.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dgvLog.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.logName,
+            this.logCode,
+            this.logIp,
+            this.content,
+            this.createTime});
+            this.dgvLog.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dgvLog.Location = new System.Drawing.Point(0, 0);
+            this.dgvLog.Name = "dgvLog";
+            this.dgvLog.ReadOnly = true;
+            this.dgvLog.RowTemplate.Height = 23;
+            this.dgvLog.Size = new System.Drawing.Size(1098, 356);
+            this.dgvLog.TabIndex = 0;
+            this.dgvLog.RowPostPaint += new System.Windows.Forms.DataGridViewRowPostPaintEventHandler(this.dgvLog_RowPostPaint);
+            // 
+            // logName
+            // 
+            this.logName.DataPropertyName = "name";
+            this.logName.HeaderText = "设备名称";
+            this.logName.Name = "logName";
+            this.logName.ReadOnly = true;
+            // 
+            // logCode
+            // 
+            this.logCode.DataPropertyName = "code";
+            this.logCode.HeaderText = "设备代号";
+            this.logCode.Name = "logCode";
+            this.logCode.ReadOnly = true;
+            // 
+            // logIp
+            // 
+            this.logIp.DataPropertyName = "ip";
+            this.logIp.HeaderText = "IP";
+            this.logIp.Name = "logIp";
+            this.logIp.ReadOnly = true;
+            // 
+            // content
+            // 
+            this.content.DataPropertyName = "content";
+            this.content.HeaderText = "内容";
+            this.content.Name = "content";
+            this.content.ReadOnly = true;
+            // 
+            // createTime
+            // 
+            this.createTime.DataPropertyName = "create_time";
+            this.createTime.HeaderText = "日期";
+            this.createTime.Name = "createTime";
+            this.createTime.ReadOnly = true;
+            // 
+            // tabPage1
+            // 
+            this.tabPage1.Controls.Add(this.button1);
+            this.tabPage1.Controls.Add(this.rchInfo);
+            this.tabPage1.Controls.Add(this.button_Close);
+            this.tabPage1.Controls.Add(this.button_StopListen);
+            this.tabPage1.Controls.Add(this.groupBox2);
+            this.tabPage1.Controls.Add(this.button_StartListen);
+            this.tabPage1.Controls.Add(this.textBox_port);
+            this.tabPage1.Controls.Add(this.label1);
+            this.tabPage1.Location = new System.Drawing.Point(4, 22);
+            this.tabPage1.Name = "tabPage1";
+            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage1.Size = new System.Drawing.Size(1098, 469);
+            this.tabPage1.TabIndex = 0;
+            this.tabPage1.Text = "客户端状态";
+            this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // rchInfo
+            // 
+            this.rchInfo.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.rchInfo.Location = new System.Drawing.Point(8, 228);
+            this.rchInfo.Name = "rchInfo";
+            this.rchInfo.Size = new System.Drawing.Size(892, 104);
+            this.rchInfo.TabIndex = 22;
+            this.rchInfo.Text = "";
+            // 
+            // button_Close
+            // 
+            this.button_Close.Enabled = false;
+            this.button_Close.Location = new System.Drawing.Point(415, 16);
+            this.button_Close.Name = "button_Close";
+            this.button_Close.Size = new System.Drawing.Size(75, 23);
+            this.button_Close.TabIndex = 18;
+            this.button_Close.Text = "关闭监听";
+            this.button_Close.UseVisualStyleBackColor = true;
+            this.button_Close.Click += new System.EventHandler(this.button_Close_Click);
+            // 
+            // button_StopListen
+            // 
+            this.button_StopListen.Enabled = false;
+            this.button_StopListen.Location = new System.Drawing.Point(305, 16);
+            this.button_StopListen.Name = "button_StopListen";
+            this.button_StopListen.Size = new System.Drawing.Size(75, 23);
+            this.button_StopListen.TabIndex = 17;
+            this.button_StopListen.Text = "停止监听";
+            this.button_StopListen.UseVisualStyleBackColor = true;
+            this.button_StopListen.Click += new System.EventHandler(this.button_StopListen_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.groupBox2.Controls.Add(this.lvIps);
+            this.groupBox2.Location = new System.Drawing.Point(6, 45);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(897, 177);
+            this.groupBox2.TabIndex = 16;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "在线列表";
+            // 
+            // lvIps
+            // 
+            this.lvIps.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader8,
+            this.columnHeader9,
+            this.columnHeader6,
+            this.columnHeader7});
+            this.lvIps.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.lvIps.HeaderStyle = System.Windows.Forms.ColumnHeaderStyle.Nonclickable;
+            this.lvIps.Location = new System.Drawing.Point(3, 17);
+            this.lvIps.Name = "lvIps";
+            this.lvIps.Size = new System.Drawing.Size(891, 157);
+            this.lvIps.TabIndex = 0;
+            this.lvIps.UseCompatibleStateImageBehavior = false;
+            this.lvIps.View = System.Windows.Forms.View.Details;
+            // 
+            // columnHeader8
+            // 
+            this.columnHeader8.Text = "名称";
+            this.columnHeader8.Width = 100;
+            // 
+            // columnHeader9
+            // 
+            this.columnHeader9.Text = "代号";
+            this.columnHeader9.Width = 100;
+            // 
+            // columnHeader6
+            // 
+            this.columnHeader6.Text = "IP";
+            this.columnHeader6.Width = 160;
+            // 
+            // columnHeader7
+            // 
+            this.columnHeader7.Text = "状态";
+            this.columnHeader7.Width = 160;
+            // 
+            // button_StartListen
+            // 
+            this.button_StartListen.Location = new System.Drawing.Point(199, 15);
+            this.button_StartListen.Name = "button_StartListen";
+            this.button_StartListen.Size = new System.Drawing.Size(75, 23);
+            this.button_StartListen.TabIndex = 15;
+            this.button_StartListen.Text = "启动";
+            this.button_StartListen.UseVisualStyleBackColor = true;
+            this.button_StartListen.Click += new System.EventHandler(this.button1_Click);
+            // 
+            // textBox_port
+            // 
+            this.textBox_port.Location = new System.Drawing.Point(93, 16);
+            this.textBox_port.Name = "textBox_port";
+            this.textBox_port.Size = new System.Drawing.Size(100, 21);
+            this.textBox_port.TabIndex = 14;
+            this.textBox_port.Text = "9000";
+            // 
+            // label1
+            // 
+            this.label1.Location = new System.Drawing.Point(11, 15);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(87, 23);
+            this.label1.TabIndex = 13;
+            this.label1.Text = "监听端口：";
+            this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
+            // 
+            // toolStripLabel_event
+            // 
+            this.toolStripLabel_event.Name = "toolStripLabel_event";
+            this.toolStripLabel_event.Size = new System.Drawing.Size(17, 22);
+            this.toolStripLabel_event.Text = "--";
+            // 
+            // toolStripLabel_clientCount
+            // 
+            this.toolStripLabel_clientCount.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.toolStripLabel_clientCount.Name = "toolStripLabel_clientCount";
+            this.toolStripLabel_clientCount.Size = new System.Drawing.Size(71, 22);
+            this.toolStripLabel_clientCount.Text = "在线数量：0";
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(65, 22);
+            this.toolStripLabel1.Text = "监听端口：";
+            // 
+            // toolStripLabel_Port
+            // 
+            this.toolStripLabel_Port.Name = "toolStripLabel_Port";
+            this.toolStripLabel_Port.Size = new System.Drawing.Size(0, 22);
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.toolStrip1.GripStyle = System.Windows.Forms.ToolStripGripStyle.Hidden;
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.toolStripLabel_event,
+            this.toolStripLabel_clientCount,
+            this.toolStripLabel1,
+            this.toolStripLabel_Port});
+            this.toolStrip1.Location = new System.Drawing.Point(0, 495);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(1106, 25);
+            this.toolStrip1.TabIndex = 7;
+            this.toolStrip1.Text = "toolStrip1";
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(513, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(156, 23);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "发送放置好信息给客户端";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            // 
             // Form2
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
@@ -1108,9 +1120,13 @@
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.Load += new System.EventHandler(this.Form1_Load);
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
+            this.tabPage4.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox4.ResumeLayout(false);
+            this.groupBox4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox1.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvClientInfo)).EndInit();
@@ -1121,13 +1137,9 @@
             ((System.ComponentModel.ISupportInitialize)(this.splitContainer1)).EndInit();
             this.splitContainer1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).EndInit();
-            this.tabPage4.ResumeLayout(false);
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox4.ResumeLayout(false);
-            this.groupBox4.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            this.groupBox1.ResumeLayout(false);
+            this.tabPage1.ResumeLayout(false);
+            this.tabPage1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -1228,6 +1240,7 @@
         private System.Windows.Forms.DataGridViewTextBoxColumn statusdes;
         private System.Windows.Forms.DataGridViewLinkColumn editip;
         private System.Windows.Forms.DataGridViewLinkColumn delip;
+        private System.Windows.Forms.Button button1;
     }
 }
 

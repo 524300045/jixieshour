@@ -16,11 +16,19 @@ using StriveEngine.BinaryDemoServer.Model;
 using System.Timers;
 using System.IO.Ports;
 using System.Configuration;
+using System.Collections.Concurrent;
+using System.Threading.Tasks;
 namespace StriveEngine.BinaryDemoServer
 {
 
     public partial class Form2 : Form
     {
+        /// <summary>
+        /// LOG日志队列
+        /// </summary>
+        public  ConcurrentQueue<ClientLogModel> logCQ = new ConcurrentQueue<ClientLogModel>();
+
+
         private ITcpServerEngine tcpServerEngine;
         private bool hasTcpServerEngineInitialized;
 
@@ -364,7 +372,7 @@ namespace StriveEngine.BinaryDemoServer
                 #endregion
             }
 
-            if (msgType==MessageType.ClientSendResult)
+            if (msgType == NewMessageType.ClientSendResult)
             {
                 #region 服务端收到客户端发送结果
 
@@ -388,7 +396,7 @@ namespace StriveEngine.BinaryDemoServer
                 response.Key = request.Key;
                 byte[] bReponse = SerializeHelper.SerializeObject(response);
                 //回复消息头
-                MessageHead head = new MessageHead(bReponse.Length, MessageType.SeverReceiveResult);
+                MessageHead head = new MessageHead(bReponse.Length, NewMessageType.SeverReceiveResult);
                 byte[] bHead = head.ToStream();
 
                 //构建回复消息
@@ -403,6 +411,44 @@ namespace StriveEngine.BinaryDemoServer
 
                 #endregion
             }
+
+
+            if (msgType==NewMessageType.ClientSendReady)
+            {
+                #region 服务端收到客户端ready请求，返回给客户端
+
+                var curDevInfo = clientSendList.Where(p => p.IP == client.Address.ToString());
+                if (curDevInfo != null && curDevInfo.FirstOrDefault() != null)
+                {
+                    clientSendList.Remove(curDevInfo.FirstOrDefault());
+                }
+
+                MsgRequestContract request = (MsgRequestContract)SerializeHelper.DeserializeBytes(bMsg, MessageHead.HeadLength, bMsg.Length - MessageHead.HeadLength);
+                string record = "收到客户端" + request.DeviceCode + "ready请求:";
+                this.ShowClientMsg(client, record);
+
+
+                MsgResponseContract response = new MsgResponseContract("", "");
+                response.Key = request.Key;
+                byte[] bReponse = SerializeHelper.SerializeObject(response);
+                //回复消息头
+                MessageHead head = new MessageHead(bReponse.Length, NewMessageType.ReceiveClientReady);
+                byte[] bHead = head.ToStream();
+
+                //构建回复消息
+                byte[] resMessage = new byte[bHead.Length + bReponse.Length];
+                Buffer.BlockCopy(bHead, 0, resMessage, 0, bHead.Length);
+                Buffer.BlockCopy(bReponse, 0, resMessage, bHead.Length, bReponse.Length);
+
+                //发送回复消息
+                this.tcpServerEngine.PostMessageToClient(client, resMessage);
+
+
+
+                #endregion
+            }
+
+
 
         }
 
@@ -534,13 +580,16 @@ namespace StriveEngine.BinaryDemoServer
         {
             try
             {
-               var curInfo=AppInfo.ClientInfoList.Where(p=>p.IP==model.IP);
-               if (curInfo != null && curInfo.FirstOrDefault() != null)
-               {
-                   model.Name = curInfo.FirstOrDefault().Name;
-                   model.Code = curInfo.FirstOrDefault().Code;
-               }
-                new ClientLogDal().Insert(model);
+                var curInfo = AppInfo.ClientInfoList.Where(p => p.IP == model.IP);
+                if (curInfo != null && curInfo.FirstOrDefault() != null)
+                {
+                    model.Name = curInfo.FirstOrDefault().Name;
+                    model.Code = curInfo.FirstOrDefault().Code;
+                }
+
+                logCQ.Enqueue(model);
+
+                // new ClientLogDal().Insert(model);
             }
             catch (Exception ex)
             {
@@ -843,6 +892,11 @@ namespace StriveEngine.BinaryDemoServer
                 return;
             }
 
+            Task.Factory.StartNew(()=>{
+          WriteLog();
+        });
+            //日志处理
+          
         }
 
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
@@ -936,6 +990,82 @@ namespace StriveEngine.BinaryDemoServer
             return request.DeviceCode + "," + request.SN+","+request.STEP+","+request.WorkCode+","+request.LineSort+",,"+request.StatusCode+","+request.ExtendOne+","+request.ExtendTwo;
         }
 
+
+        #region 日志消息队列处理
+
+        private void WriteLog()
+        {
+            try
+            {
+                while (true)
+                {
+                    if (logCQ.Count > 0)
+                    {
+                        ClientLogModel model = new ClientLogModel();
+                        if (logCQ.TryDequeue(out model))
+                        {
+                            new ClientLogDal().Insert(model);
+                        }
+                    }
+                    System.Threading.Thread.Sleep(5000);
+                }
+            }
+            catch (Exception ex)
+            {
+                LogHelper.Log(ex.Message);
+            }
+        
+        }
+
+        #endregion
+
+     
+
+        private void button1_Click_2(object sender, EventArgs e)
+        {
+            if (lvIps.SelectedItems.Count == 0) return;
+
+            string ipInfo = lvIps.SelectedItems[0].SubItems[2].Text;
+
+            string ip = ipInfo.Split(':')[0];
+            string curPort = ipInfo.Split(':')[1];
+
+            IPEndPoint client = new IPEndPoint(IPAddress.Parse(ip), int.Parse(curPort)); ;
+            ClientSendInfo sendInfo = new ClientSendInfo();
+            sendInfo.IP = ip;
+            sendInfo.SendBarCodeTime = DateTime.Now;
+            sendInfo.IpPoint = client;
+            var curDevInfoResult = AppInfo.ClientInfoList.Where(p => p.IP == sendInfo.IP);
+            if (curDevInfoResult != null && curDevInfoResult.FirstOrDefault() != null)
+            {
+                sendInfo.Name = curDevInfoResult.FirstOrDefault().Name;
+                sendInfo.Code = curDevInfoResult.FirstOrDefault().Code;
+            }
+            sendInfo.BarCode = "12345678";
+            clientSendList.Add(sendInfo);
+
+            //回复消息体
+            MsgResponseContract response = new MsgResponseContract("", "12345678");
+            response.Key = "";
+            byte[] bReponse = SerializeHelper.SerializeObject(response);
+            //回复消息头
+            MessageHead head = new MessageHead(bReponse.Length, NewMessageType.ServerPlaceDevice);
+            byte[] bHead = head.ToStream();
+
+            //构建回复消息
+            byte[] resMessage = new byte[bHead.Length + bReponse.Length];
+            Buffer.BlockCopy(bHead, 0, resMessage, 0, bHead.Length);
+            Buffer.BlockCopy(bReponse, 0, resMessage, bHead.Length, bReponse.Length);
+
+            //发送回复消息
+            this.tcpServerEngine.PostMessageToClient(client, resMessage);
+     
+        }
+
+
     }
+
+
+  
 
 }
