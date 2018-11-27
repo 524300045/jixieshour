@@ -202,6 +202,8 @@ namespace StriveEngine.BinaryDemo
             contract.Key = Guid.NewGuid().ToString();
             byte[] bBody = SerializeHelper.SerializeObject(contract);
 
+            contract.Msg = "1222,ok";
+
             //消息头
             MessageHead head = new MessageHead(bBody.Length, msgType);
             byte[] bHead = head.ToStream();

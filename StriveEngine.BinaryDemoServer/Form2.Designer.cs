@@ -103,6 +103,7 @@
             this.content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.button1 = new System.Windows.Forms.Button();
             this.rchInfo = new System.Windows.Forms.RichTextBox();
             this.button_Close = new System.Windows.Forms.Button();
             this.button_StopListen = new System.Windows.Forms.Button();
@@ -120,7 +121,8 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel_Port = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btnZhuaZou = new System.Windows.Forms.Button();
+            this.btnZhuanAndPlace = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -933,6 +935,8 @@
             // 
             // tabPage1
             // 
+            this.tabPage1.Controls.Add(this.btnZhuanAndPlace);
+            this.tabPage1.Controls.Add(this.btnZhuaZou);
             this.tabPage1.Controls.Add(this.button1);
             this.tabPage1.Controls.Add(this.rchInfo);
             this.tabPage1.Controls.Add(this.button_Close);
@@ -948,6 +952,16 @@
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "客户端状态";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // button1
+            // 
+            this.button1.Location = new System.Drawing.Point(513, 16);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(156, 23);
+            this.button1.TabIndex = 23;
+            this.button1.Text = "发送放置好信息给客户端";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click_2);
             // 
             // rchInfo
             // 
@@ -1096,15 +1110,25 @@
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // button1
+            // btnZhuaZou
             // 
-            this.button1.Location = new System.Drawing.Point(513, 16);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(156, 23);
-            this.button1.TabIndex = 23;
-            this.button1.Text = "发送放置好信息给客户端";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click_2);
+            this.btnZhuaZou.Location = new System.Drawing.Point(697, 14);
+            this.btnZhuaZou.Name = "btnZhuaZou";
+            this.btnZhuaZou.Size = new System.Drawing.Size(75, 23);
+            this.btnZhuaZou.TabIndex = 24;
+            this.btnZhuaZou.Text = "抓走";
+            this.btnZhuaZou.UseVisualStyleBackColor = true;
+            this.btnZhuaZou.Click += new System.EventHandler(this.btnZhuaZou_Click);
+            // 
+            // btnZhuanAndPlace
+            // 
+            this.btnZhuanAndPlace.Location = new System.Drawing.Point(794, 15);
+            this.btnZhuanAndPlace.Name = "btnZhuanAndPlace";
+            this.btnZhuanAndPlace.Size = new System.Drawing.Size(75, 23);
+            this.btnZhuanAndPlace.TabIndex = 25;
+            this.btnZhuanAndPlace.Text = "抓走并放置";
+            this.btnZhuanAndPlace.UseVisualStyleBackColor = true;
+            this.btnZhuanAndPlace.Click += new System.EventHandler(this.btnZhuanAndPlace_Click);
             // 
             // Form2
             // 
@@ -1241,6 +1265,8 @@
         private System.Windows.Forms.DataGridViewLinkColumn editip;
         private System.Windows.Forms.DataGridViewLinkColumn delip;
         private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btnZhuaZou;
+        private System.Windows.Forms.Button btnZhuanAndPlace;
     }
 }
 
