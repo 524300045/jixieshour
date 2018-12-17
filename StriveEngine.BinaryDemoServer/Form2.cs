@@ -18,6 +18,11 @@ using System.IO.Ports;
 using System.Configuration;
 using System.Collections.Concurrent;
 using System.Threading.Tasks;
+using PdaTester;
+using System.Threading;
+using FwCore.Tasks;
+using Atms.Common;
+using Atms.Common.DevicePos;
 namespace StriveEngine.BinaryDemoServer
 {
 
@@ -28,93 +33,37 @@ namespace StriveEngine.BinaryDemoServer
         /// </summary>
         public  ConcurrentQueue<ClientLogModel> logCQ = new ConcurrentQueue<ClientLogModel>();
 
-
+  
         private ITcpServerEngine tcpServerEngine;
         private bool hasTcpServerEngineInitialized;
 
-        private List<ClientInfo> clientInfos = new List<ClientInfo>();
 
+        List<IOInfo> ioInfoList = new List<IOInfo>();
+        List<FctPos> fctPosList = new List<FctPos>();
 
-        private List<ClientSendInfo> clientSendList = new List<ClientSendInfo>();
-
-        private int pageIndex;
-
-        private int pageSize=10;
-
-        private int totalPage = 0;
-
-        private int totalLogCount = 0;
+       HomeControl homeControl;
 
         //MES接口
         string messerver = ConfigurationManager.AppSettings["mesip"];
         string mesport = ConfigurationManager.AppSettings["mesport"];
 
 
-        private System.Timers.Timer _timerSendBarCode;
-
-        private System.Timers.Timer _timerResult;
-
-
-        SerialPort serialPort1 = new SerialPort("COM2", 9600, Parity.None, 8, StopBits.One);      //初始化串口设置
+        UcFlow u1;
+      
         public delegate void Displaydelegate(byte[] InputBuf);
-        Byte[] OutputBuf = new Byte[128];
         public Displaydelegate disp_delegate;
 
         public Form2()
         {
             InitializeComponent();
-            _timerSendBarCode = new System.Timers.Timer();
-            _timerSendBarCode.Elapsed+=_timerSendBarCode_Tick;
-            _timerSendBarCode.Enabled = true;
-            _timerSendBarCode.Interval = 1000;
 
-            _timerResult = new System.Timers.Timer();
-            _timerResult.Elapsed+=_timerResult_Elapsed;
-            _timerResult.Enabled = true;
-            _timerResult.Interval = 5000;
-
-            //显示
             disp_delegate = new Displaydelegate(DispUI);
-            serialPort1.DataReceived += new SerialDataReceivedEventHandler(Comm_DataReceived);
+           
 
         }
 
 
         #region 定时器
-        
-        private void _timerResult_Elapsed(object sender, ElapsedEventArgs e)
-        {
-
-            try
-            {
-                var curList = clientSendList.Where(p=>p.ReceiveTime!=null).ToList();
-                if (curList.Count > 0)
-                {
-                    foreach (var item in curList)
-                    {
-                        int second = ExecDateDiff(DateTime.Now, item.ReceiveTime.Value);
-                        if (second>60)
-                        {
-
-                            ClientLogModel logModel = new ClientLogModel();
-                            logModel.Content = "客户端返回结果超时,请检查客户端";
-                            logModel.IP = item.IP;
-                            InsertLog(logModel);
-                            //等待结果超时
-                            var curResult = clientSendList.Where(p => p.IP == item.IP);
-                            if (curResult != null && curResult.FirstOrDefault() != null)
-                            {
-                                clientSendList.Remove(curResult.FirstOrDefault());
-                            }
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Log("_timerResult_Elapsed" + ex.Message);
-            }
-        }
 
         /// <summary>
         /// 程序执行时间测试
@@ -131,73 +80,7 @@ namespace StriveEngine.BinaryDemoServer
             return ts3.Minutes*60+ts3.Seconds;
         }
 
-        private void _timerSendBarCode_Tick(object sender, ElapsedEventArgs e)
-        {
-            try
-            {
-                var curList = clientSendList.Where(p => p.BarCode!="").ToList();
-
-                if (curList.Count > 0)
-                {
-                    foreach (var item in curList)
-                    {
-                      
-                        int second = ExecDateDiff(DateTime.Now, item.SendBarCodeTime);
-                        if (item.TotalSendCount>=3)
-                        {
-                          var curResult=clientSendList.Where(p=>p.IP==item.IP);
-                          if (curResult!=null&&curResult.FirstOrDefault()!=null)
-                          {
-                              clientSendList.Remove(curResult.FirstOrDefault());
-                          }
-                       
-                          ClientLogModel logModel = new ClientLogModel();
-                          logModel.Content = "发送次数超超过3次，请检查客户端";
-                          logModel.IP = item.IP;
-                          InsertLog(logModel);
-
-                          this.ShowClientMsg(item.IpPoint, logModel.Content);
-                          continue;
-                        }
-                        if (second>5)
-                        {
-                            //重新发送条码
-                            string  record = "重新发送条码"+item.BarCode+"到客户端";
-                            this.ShowClientMsg(item.IpPoint, record);
-
-                            ClientLogModel logModel = new ClientLogModel();
-                            logModel.Content = record;
-                            logModel.IP = item.IP;
-                            InsertLog(logModel);
-
-                            //回复消息体
-                            MsgResponseContract response = new MsgResponseContract("", item.BarCode);
-                           // response.Key = request.Key;
-                            byte[] bReponse = SerializeHelper.SerializeObject(response);
-                            //回复消息头
-                            MessageHead head = new MessageHead(bReponse.Length, MessageType.ServerResponseBarCode);
-                            byte[] bHead = head.ToStream();
-
-                            //构建回复消息
-                            byte[] resMessage = new byte[bHead.Length + bReponse.Length];
-                            Buffer.BlockCopy(bHead, 0, resMessage, 0, bHead.Length);
-                            Buffer.BlockCopy(bReponse, 0, resMessage, bHead.Length, bReponse.Length);
-
-                            //发送回复消息
-                            this.tcpServerEngine.PostMessageToClient(item.IpPoint, resMessage);
-
-                            item.SendBarCodeTime = DateTime.Now;
-
-                            item.TotalSendCount += 1;
-                        }
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Log("_timerSendBarCode_Tick" + ex.Message);
-            }
-        }
+       
 
         #endregion
 
@@ -208,8 +91,7 @@ namespace StriveEngine.BinaryDemoServer
         {
             try
             {
-                _timerSendBarCode.Start();
-                _timerResult.Start();
+           
                 if (this.tcpServerEngine == null)
                 {
                     this.tcpServerEngine = NetworkEngineFactory.CreateStreamTcpServerEngine(int.Parse(this.textBox_port.Text), new  StreamContractHelper());
@@ -289,22 +171,27 @@ namespace StriveEngine.BinaryDemoServer
             //获取消息类型
             int msgType = BitConverter.ToInt32(bMsg, 4);//消息类型是 从offset=4处开始 的一个整数
 
-
             if (msgType == NewMessageType.ClientSendReady)
             {
                 #region 客服端发送ready请求，服务端收到ready请求
 
-                var curDevInfo = clientSendList.Where(p => p.IP == client.Address.ToString());
-                if (curDevInfo != null && curDevInfo.FirstOrDefault() != null)
+                //改变客户端状态
+                var clientResult = SystemInfo.ClientInfoList.Where(p => p.Ip == client.Address.ToString());
+              
+                foreach (var item in SystemInfo.ClientInfoList)
                 {
-                    clientSendList.Remove(curDevInfo.FirstOrDefault());
+                    if (item.Ip==client.Address.ToString())
+                    {
+                        item.State = 1;
+                    }
                 }
-
+             
                 MsgRequestContract request = (MsgRequestContract)SerializeHelper.DeserializeBytes(bMsg, MessageHead.HeadLength, bMsg.Length - MessageHead.HeadLength);
-                string record = "收到客户端" + request.DeviceCode + "ready请求:";
-                this.ShowClientMsg(client, record);
 
 
+
+                ShowMsghomeControl("收到" + client.Address.ToString() + "ClientSendReady的请求");
+           
                 MsgResponseContract response = new MsgResponseContract("", "");
                 response.Key = request.Key;
                 byte[] bReponse = SerializeHelper.SerializeObject(response);
@@ -320,6 +207,7 @@ namespace StriveEngine.BinaryDemoServer
                 //发送回复消息
                 this.tcpServerEngine.PostMessageToClient(client, resMessage);
 
+                ShowMsghomeControl("向客户端回复" + client.Address.ToString() + "ReceiveClientReady的请求");
 
 
                 #endregion
@@ -329,16 +217,23 @@ namespace StriveEngine.BinaryDemoServer
             {
                 #region 客户端发送测试完成
 
+                MsgRequestContract request = (MsgRequestContract)SerializeHelper.DeserializeBytes(bMsg, MessageHead.HeadLength, bMsg.Length - MessageHead.HeadLength);
 
-                var curDevInfo = clientSendList.Where(p => p.IP == client.Address.ToString());
-                if (curDevInfo != null && curDevInfo.FirstOrDefault() != null)
+         
+                ShowMsghomeControl("收到" + client.Address.ToString() + "ClientSendTestFinished的请求," + request.Msg);
+
+                foreach (var item in SystemInfo.ClientInfoList)
                 {
-                    clientSendList.Remove(curDevInfo.FirstOrDefault());
+                    if (item.Ip == client.Address.ToString())
+                    {
+                        item.State =3;
+                    }
                 }
 
-                MsgRequestContract request = (MsgRequestContract)SerializeHelper.DeserializeBytes(bMsg, MessageHead.HeadLength, bMsg.Length - MessageHead.HeadLength);
-                string record = "收到客户端" + request.DeviceCode + "测试完成请求:";
-                this.ShowClientMsg(client, record);
+                ClientRquestInfo requestInfo = new ClientRquestInfo();
+                requestInfo.endPoint = client;
+                requestInfo.messageType = msgType;
+                SystemInfo.clientRequestCQ.Enqueue(requestInfo);
 
                 //服务端收到客户端测试完成请求
                 MsgResponseContract response = new MsgResponseContract("", "");
@@ -356,6 +251,30 @@ namespace StriveEngine.BinaryDemoServer
                 //发送回复消息
                 this.tcpServerEngine.PostMessageToClient(client, resMessage);
 
+                   MessageResult messageResult = new MessageResult();
+                if (request.Msg.Split(',')[1].ToUpper() == "PASS")
+                {
+                    //放置到good区
+                    messageResult.BarCode = request.Msg.Split(',')[0];
+                    messageResult.Code = request.Msg.Split(',')[1].ToUpper();
+                }
+                else
+                {
+                    //放置到Ng区
+                    messageResult.BarCode = request.Msg.Split(',')[0];
+                    messageResult.Code = request.Msg.Split(',')[1].ToUpper();
+                }
+
+                var clientResult = SystemInfo.ClientInfoList.Where(p => p.Ip == client.Address.ToString());
+                if (clientResult!=null&&clientResult.FirstOrDefault()!=null)
+                {
+                    clientResult.FirstOrDefault().MsgResult = messageResult;
+                }
+
+                ShowMsghomeControl("向客户端回复" + client.Address.ToString() + "ServerReceiveTestFinished的请求");
+
+             
+
                 #endregion
             }
 
@@ -363,21 +282,10 @@ namespace StriveEngine.BinaryDemoServer
             {
                 #region 服务端收到客户端发送结果
 
-                var curDevInfo = clientSendList.Where(p => p.IP == client.Address.ToString());
-                if (curDevInfo != null && curDevInfo.FirstOrDefault() != null)
-                {
-                    clientSendList.Remove(curDevInfo.FirstOrDefault());
-                }
-
-
                 MsgRequestContract request = (MsgRequestContract)SerializeHelper.DeserializeBytes(bMsg, MessageHead.HeadLength, bMsg.Length - MessageHead.HeadLength);
-                string record = "收到客户端发送结果:" + request.Msg;
-                this.ShowClientMsg(client, record);
 
-
-
-                // record = "发送收到结果消息给客户端:";
-                //this.ShowClientMsg(client, record);
+                ShowMsghomeControl("收到" + client.Address.ToString() + "ClientSendResult的请求," + request.Msg);
+                ShowMsghomeControl("收到" + client.Address.ToString() + "ClientSendResult的请求," + request.Msg);
                 //回复消息体
                 MsgResponseContract response = new MsgResponseContract("", "");
                 response.Key = request.Key;
@@ -394,14 +302,31 @@ namespace StriveEngine.BinaryDemoServer
                 //发送回复消息
                 this.tcpServerEngine.PostMessageToClient(client, resMessage);
 
+               // ShowMsg("收到客户端测试结果:ClientSendResult:" + request.Msg);
 
+                MessageResult messageResult = new MessageResult();
+                if (request.Msg.Split(',')[1].ToUpper() == "PASS")
+                {
+                    //放置到good区
+                    messageResult.BarCode = request.Msg.Split(',')[0];
+                    messageResult.Code = request.Msg.Split(',')[1].ToUpper();
+                }
+                else
+                {
+                    //放置到Ng区
+                    messageResult.BarCode = request.Msg.Split(',')[0];
+                    messageResult.Code = request.Msg.Split(',')[1].ToUpper();
+                }
 
+                var clientResult = SystemInfo.ClientInfoList.Where(p => p.Ip == client.Address.ToString());
+                if (clientResult != null && clientResult.FirstOrDefault() != null)
+                {
+                    clientResult.FirstOrDefault().MsgResult = messageResult;
+                }
+
+                ShowMsghomeControl("向客户端回复:" + client.Address.ToString() + "SeverReceiveResult的请求,");
                 #endregion
             }
-
-
-         
-
 
 
         }
@@ -450,7 +375,6 @@ namespace StriveEngine.BinaryDemoServer
 
                 return;
             }
-            ClientInfo curIpDevInfo=null;
             if (this.InvokeRequired)
             {
                 this.BeginInvoke(new CbDelegate<string,System.Net.IPEndPoint>(this.ShowEvent), msg,ipe);
@@ -460,13 +384,13 @@ namespace StriveEngine.BinaryDemoServer
                 if (msg=="上线")
                 {
                     #region 上线处理
-                    
-                    var result = clientInfos.Where(p => p.IpPoint == ipe);
+
+                    var result = SystemInfo.ClientInfoList.Where(p => p.Ip == ipe.Address.ToString());
                     if (result == null || result.FirstOrDefault() == null)
                     {
+                        ShowMsghomeControl("设备" + ipe.Address.ToString() + "上线");
                         ClientInfo info = new ClientInfo();
                         info.IpPoint = ipe;
-                        info.State = 1;
                         info.StateDes = "在线";
                         info.IsOnLine = 1;
                         if (curResult!=null)
@@ -474,14 +398,19 @@ namespace StriveEngine.BinaryDemoServer
                             info.Code = curResult.FirstOrDefault().Code;
                             info.Name = curResult.FirstOrDefault().Name;
                         }
-                        curIpDevInfo=info;
-                        clientInfos.Add(info);
+                        info.Ip = ipe.Address.ToString();
+                        info.FctPos = SystemInfo.FctPosList.Where(p => p.IP == ipe.Address.ToString()).FirstOrDefault();
+                        SystemInfo.ClientInfoList.Add(info);
                     }
                     else
                     {
-                     
-                        result.FirstOrDefault().State = 1;
+                        
+                        ShowMsghomeControl("设备" + ipe.Address.ToString() + "上线....");
+                        result.FirstOrDefault().IsOnLine = 1;
+                        result.FirstOrDefault().IpPoint = ipe;
                         result.FirstOrDefault().StateDes = "在线";
+                        result.FirstOrDefault().Ip = ipe.Address.ToString();
+                        result.FirstOrDefault().FctPos= SystemInfo.FctPosList.Where(p => p.IP == ipe.Address.ToString()).FirstOrDefault();
                     }
 
                     #endregion
@@ -489,44 +418,20 @@ namespace StriveEngine.BinaryDemoServer
                 if (msg=="下线")
                 {
                     #region 下线处理
-                    
-                    var result = clientInfos.Where(p => p.IpPoint == ipe);
+
+                    ShowMsghomeControl("设备" + ipe.Address.ToString() + "下线....");
+                    var result = SystemInfo.ClientInfoList.Where(p => p.Ip == ipe.Address.ToString());
                     if (result != null && result.FirstOrDefault()!=null)
                     {
                         result.FirstOrDefault().State = 0;
                         result.FirstOrDefault().StateDes = "下线";
                         result.FirstOrDefault().IsOnLine = 0;
+                        result.FirstOrDefault().IpPoint = ipe;
                     }
-                     curIpDevInfo=result.FirstOrDefault();
-
                     #endregion
                 }
-
-                this.lvIps.Items.Clear();
-                for (int i = 0; i < clientInfos.Count; i++)
-                {
-                    ListViewItem itemIp = new ListViewItem(new string[] {clientInfos[i].Name,clientInfos[i].Code, clientInfos[i].IpPoint.ToString(), clientInfos[i].StateDes });
-                    this.lvIps.Items.Insert(0, itemIp);
-
-                    //更新控件显示状态
-
-                    foreach (Control item in panelPC.Controls)
-                    {
-                        if (item is PCUserControl)
-                        {
-                            PCUserControl testPcControl = (PCUserControl)item;
-                            if (testPcControl.Name==clientInfos[i].Code)
-                            {
-                                testPcControl.SetMsg(clientInfos[i].StateDes);
-                            }
-                        }
-                    }
-                }
-
                 this.toolStripLabel_event.Text = ipe.ToString()+msg;
-                string msgText = curIpDevInfo.Name + "--" + curIpDevInfo.Code+"--"+ipe.ToString()+":"+msg;;
-                this.rchInfo.AppendText(msgText+"\r\n");
-                this.rtbInfo.AppendText(msgText + "\r\n");
+
             }
         }
 
@@ -551,59 +456,7 @@ namespace StriveEngine.BinaryDemoServer
             }
         }
 
-        private void ShowClientMsg(IPEndPoint client, string msg)
-        {
-            if (this.InvokeRequired)
-            {
-                this.BeginInvoke(new CbDelegate<IPEndPoint,string>(this.ShowClientMsg),client, msg);
-            }
-            else
-            {
-                if (msg != "上线")
-                {
-                    var curInfo = AppInfo.ClientInfoList.Where(p => p.IP == client.Address.ToString());
-                    if (curInfo != null && curInfo.FirstOrDefault() != null)
-                    {
-                        msg = curInfo.FirstOrDefault().Name + "--" + curInfo.FirstOrDefault().Code + "--" + curInfo.FirstOrDefault().IP + ":"+msg;
-                    }
-
-                    rchInfo.AppendText(msg+"\r\n");
-                    rtbInfo.AppendText(msg + "\r\n");
-
-                    ClientLogModel model=new ClientLogModel();
-                    model.Content=msg;
-                    model.IP = client.Address.ToString();
-                    InsertLog(model);
-                }
-                else
-                {
-
-                    var result = clientInfos.Where(p => p.IpPoint == client);
-                    if (result == null || result.FirstOrDefault() == null)
-                    {
-                        ClientInfo info = new ClientInfo();
-                        info.IpPoint = client;
-                        info.State = 1;
-                        info.StateDes = "在线";
-                        clientInfos.Add(info);
-                    }
-                    else
-                    {
-                        result.FirstOrDefault().State = 1;
-                        result.FirstOrDefault().StateDes = "在线";
-                    }
-                    this.lvIps.Items.Clear();
-                    for (int i = 0; i < clientInfos.Count; i++)
-                    {
-                        ListViewItem itemIp = new ListViewItem(new string[] { clientInfos[i].IpPoint.ToString(), clientInfos[i].StateDes });
-                        this.lvIps.Items.Insert(0, itemIp);
-                    }
-                }
-              
-               
-            }
-        }
-
+    
         private void ShowConnectionCount(int clientCount)
         {
             if (this.InvokeRequired)
@@ -680,45 +533,9 @@ namespace StriveEngine.BinaryDemoServer
         #region 日志管理
         
       
-        private void btnFirst_Click(object sender, EventArgs e)
-        {
-            pageIndex = 0;
-            BindLog();
-
-            btnFirst.Enabled = false;
-            btnPre.Enabled = false;
-            btnNext.Enabled = true;
-            btnEnd.Enabled = true;
-
-        }
-
-        private void BindLog()
-        {
-
-            string begintime = dtBegin.Value.ToShortDateString() + " 00:00:00";
-            string endTime = dtEnd.Value.ToShortDateString() + " 23:59:59";
-            DataTable dt = new ClientLogDal().GetLogDt(pageIndex, pageSize, tbDevCode.Text.Trim(), begintime, endTime);
-           this.dgvLog.DataSource=dt;
-           totalLogCount = new ClientLogDal().GetLogDtCount(tbDevCode.Text.Trim(), begintime, endTime);
-           if (totalLogCount % pageSize == 0)
-           {
-               totalPage = totalLogCount / pageSize;
-           }
-           else
-           {
-               totalPage = totalLogCount / pageSize + 1;
-           }
-
-           if (totalLogCount==0)
-           {
-               btnFirst.Enabled = false;
-               btnEnd.Enabled = false;
-               btnPre.Enabled = false;
-               btnNext.Enabled = false;
-           }
+ 
 
 
-        }
 
   
         private void tabControl1_SelectedIndexChanged(object sender, EventArgs e)
@@ -728,7 +545,7 @@ namespace StriveEngine.BinaryDemoServer
             if (this.tabControl1.SelectedIndex==2)
             {
                 dtBegin.Value = DateTime.Now;
-                BindLog();
+                
             }
             if (this.tabControl1.SelectedIndex ==1)
             {
@@ -737,66 +554,28 @@ namespace StriveEngine.BinaryDemoServer
             }
         }
 
-        private void btnPre_Click(object sender, EventArgs e)
-        {
-            pageIndex--;
-            if (pageIndex <= 0)
-            {
-                pageIndex = 0;
-                btnFirst.Enabled = false;
-                btnPre.Enabled = false;
-                btnNext.Enabled = true;
-                btnEnd.Enabled = true;
-            }
-                BindLog();
-   
+  
+ 
 
-        }
-
-        private void btnNext_Click(object sender, EventArgs e)
-        {
-            pageIndex++;
-            if (pageIndex >= totalPage - 1)
-            {
-                btnFirst.Enabled = true;
-                btnPre.Enabled = true;
-                btnNext.Enabled = false;
-                btnEnd.Enabled = false;
-            }
-            BindLog();
-        }
-
-        private void btnEnd_Click(object sender, EventArgs e)
-        {
-
-            if (totalPage>0)
-            {
-                pageIndex = totalPage - 1;
-                BindLog();
-                btnNext.Enabled = false;
-                btnEnd.Enabled = false;
-                btnPre.Enabled = true;
-                btnFirst.Enabled = true;
-            }
-        
-           
-        }
+ 
 
         #endregion
 
         #region 页面加载
-    
+
+        IoCard ioCard;
+        public bool bRefresh = true;
         private void Form1_Load(object sender, EventArgs e)
         {
             //当前设备编码
-            SeverInfo.DeviceCode = ConfigurationManager.AppSettings["devicecode"];
-            this.Text = this.Text + SeverInfo.DeviceCode;//当前编码
-
+            RobotInfo.DeviceCode = ConfigurationManager.AppSettings["devicecode"];
+            this.Text = this.Text + RobotInfo.DeviceCode;//当前编码
+            SystemInfo.ClientInfoList = new List<ClientInfo>();
+            SystemInfo.clientRequestCQ=new  ConcurrentQueue<ClientRquestInfo>();
             List<ClientIpInfoModel> list = new List<ClientIpInfoModel>();
             DataTable dt = new ClientInfoDal().GetDS();
             if (dt!=null&&dt.Rows.Count>0)
             {
-                int width = 0;
                 for (int i = 0; i < dt.Rows.Count; i++)
                 {
                     ClientIpInfoModel model = new ClientIpInfoModel();
@@ -808,17 +587,22 @@ namespace StriveEngine.BinaryDemoServer
                     model.Timeouts = Convert.ToInt32(dt.Rows[i]["timeouts"].ToString());
                     model.Status = Convert.ToInt32(dt.Rows[i]["status"].ToString());
                     list.Add(model);
-                    
-                    PCUserControl pc = new PCUserControl();
-                    pc.Name = model.Code;
-                    pc.LabelText(model.Name+"--"+model.Code);
-                    pc.Location = new Point(width, 0);
-                    width = width + pc.Width;
-                    pc.SetMsg("离线");
-                    panelPC.Controls.Add(pc);
+
+                    ClientInfo info = new ClientInfo();
+                    info.Code = dt.Rows[i]["code"].ToString();
+                    info.Name = dt.Rows[i]["name"].ToString();
+                    info.Ip = dt.Rows[i]["ip"].ToString();
+                    SystemInfo.ClientInfoList.Add(info);
+                
                 }
             }
             AppInfo.ClientInfoList = list;
+
+            LoadFctPos();
+            LoadIOPos();
+            SystemInfo.FctPosList = fctPosList;
+            SystemInfo.IoInfoList = ioInfoList;
+
 
             try
             {
@@ -831,20 +615,34 @@ namespace StriveEngine.BinaryDemoServer
                 return;
             }
 
-            //串口打开
-            try
+
+            u1 = new UcFlow();
+            tabPage5.Controls.Add(u1);
+            ioCard = RobotApp.IoCard;
+
+             homeControl = new HomeControl();
+             homeControl.Dock = DockStyle.Fill;
+             panel2.Controls.Add(homeControl);
+
+            TaskContinue.Start(delegate
             {
-                if (!serialPort1.IsOpen)
+                if (!RobotApp.BRun)
                 {
-                    serialPort1.Open();
+                    return false;
                 }
-            }
-            catch (Exception ex)
-            {
-                LogHelper.Log("串口打开失败" + ex.Message);
-                MessageBox.Show(ex.Message, "错误提示", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                bool b = true;
+                if (bRefresh)
+                    b = ioCard.RefreshDI();
+                return b;
+      
+            }, 100, "IoCard");
+			
+            u1.ConsoleMsgEvent+=u1_ConsoleMsgEvent;
+            u1.SendMessageEvent+=u1_SendMessageEvent;
+            u1.RobotStatusEvent +=u1_RobotStatusEvent;
+
+            homeControl.SendMessageEvent += u1_SendMessageEvent;
+
 
             Task.Factory.StartNew(()=>{
           WriteLog();
@@ -853,15 +651,128 @@ namespace StriveEngine.BinaryDemoServer
           
         }
 
+        private void u1_ConsoleMsgEvent(string msg)
+        {
+            ShowMsghomeControl(msg);
+        }
+
+
+
+        private string u1_SendMessageEvent(int type,string barCode,string ip)
+        {
+            if (SystemInfo.ClientInfoList.Count <= 0)
+            {
+                return "";
+            }
+
+            IPEndPoint client = SystemInfo.ClientInfoList.Where(p => p.Ip == ip).FirstOrDefault().IpPoint;
+         //   ShowMsghomeControl("向client" + client.Address.ToString() + "发送:" + type + "--" + barCode);
+         
+            if (type==8)
+            {
+                #region 机械手放置设备
+
+                ShowMsghomeControl("向client" + client.Address.ToString() + "发送放置:ServerPlaceDevice" + type + "--" + barCode);
+
+                //回复消息体
+                MsgResponseContract response = new MsgResponseContract("", "");
+                response.Key = "";
+                response.Msg = barCode;
+                byte[] bReponse = SerializeHelper.SerializeObject(response);
+                //回复消息头
+                MessageHead head = new MessageHead(bReponse.Length, NewMessageType.ServerPlaceDevice);
+                byte[] bHead = head.ToStream();
+
+                //构建回复消息
+                byte[] resMessage = new byte[bHead.Length + bReponse.Length];
+                Buffer.BlockCopy(bHead, 0, resMessage, 0, bHead.Length);
+                Buffer.BlockCopy(bReponse, 0, resMessage, bHead.Length, bReponse.Length);
+
+                //发送回复消息
+                this.tcpServerEngine.PostMessageToClient(client, resMessage);
+
+                foreach (var item in SystemInfo.ClientInfoList)
+                {
+                    if (item.Ip==client.Address.ToString())
+                    {
+                        item.State = 2;
+                    }
+                }
+
+                #endregion
+            }
+
+            if (type==11)
+            {
+                #region 取走设备
+
+
+                ShowMsghomeControl("向client" + client.Address.ToString() + "发送取走:ServerTakeDevice" + type + "--" + barCode);
+
+                //回复消息体
+                MsgResponseContract response = new MsgResponseContract("", "");
+                response.Key = "";
+                response.Msg = "";
+                byte[] bReponse = SerializeHelper.SerializeObject(response);
+                //回复消息头
+                MessageHead head = new MessageHead(bReponse.Length, NewMessageType.ServerTakeDevice);
+                byte[] bHead = head.ToStream();
+
+                //构建回复消息
+                byte[] resMessage = new byte[bHead.Length + bReponse.Length];
+                Buffer.BlockCopy(bHead, 0, resMessage, 0, bHead.Length);
+                Buffer.BlockCopy(bReponse, 0, resMessage, bHead.Length, bReponse.Length);
+                //发送回复消息
+                this.tcpServerEngine.SendMessageToClient(client, resMessage);
+
+             
+
+                #endregion
+            }
+
+            if (type == 12)
+            {
+                #region 取走设备
+
+                ShowMsghomeControl("向client" + client.Address.ToString() + "发送取走并放置:ServerTakeDeviceAndPlaceDevice" + type + "--" + barCode);
+                //回复消息体
+                MsgResponseContract response = new MsgResponseContract("", "");
+                response.Key = "";
+                response.Msg = barCode;
+                byte[] bReponse = SerializeHelper.SerializeObject(response);
+                //回复消息头
+                MessageHead head = new MessageHead(bReponse.Length, NewMessageType.ServerTakeDeviceAndPlaceDevice);
+                byte[] bHead = head.ToStream();
+
+                //构建回复消息
+                byte[] resMessage = new byte[bHead.Length + bReponse.Length];
+                Buffer.BlockCopy(bHead, 0, resMessage, 0, bHead.Length);
+                Buffer.BlockCopy(bReponse, 0, resMessage, bHead.Length, bReponse.Length);
+                //发送回复消息
+                this.tcpServerEngine.SendMessageToClient(client, resMessage);
+
+
+
+                #endregion
+            }
+           
+
+
+
+            return "";
+        
+        }
+
+
+        private void u1_RobotStatusEvent(int status)
+        {
+            RobotInfo.WorkStatus = status;
+        }
+ 
+
         private void Form1_FormClosing(object sender, FormClosingEventArgs e)
         {
-            _timerResult.Enabled = false;
-            _timerSendBarCode.Enabled = false;
-            _timerResult.Dispose();
-            _timerSendBarCode.Dispose();
-            _timerResult = null;
-            _timerSendBarCode = null;
-
+    
             button_Close_Click(null,null);
 
         }
@@ -883,32 +794,9 @@ namespace StriveEngine.BinaryDemoServer
                 TextFormatFlags.VerticalCenter | TextFormatFlags.Right);
         }
 
-        private void btnSearch_Click(object sender, EventArgs e)
-        {
-            BindLog();
-        }
+  
 
         #region 串口
-
-        void Comm_DataReceived(object sender, SerialDataReceivedEventArgs e)
-        {
-
-            Byte[] InputBuf = new Byte[128];
-
-            try
-            {
-                serialPort1.Read(InputBuf, 0, serialPort1.BytesToRead);                                //读取缓冲区的数据直到“}”即0x7D为结束符
-                //InputBuf = UnicodeEncoding.Default.GetBytes(strRD);             //将得到的数据转换成byte的格式
-                System.Threading.Thread.Sleep(50);
-                this.Invoke(disp_delegate, InputBuf);
-
-            }
-            catch (TimeoutException ex)         //超时处理
-            {
-                LogHelper.Log("Comm_DataReceived:" + ex.Message);
-                MessageBox.Show(ex.ToString());
-            }
-        }
 
         public void DispUI(byte[] InputBuf)
         {
@@ -920,7 +808,7 @@ namespace StriveEngine.BinaryDemoServer
           //  richTextBox1.Text = encoding.GetString(InputBuf);
             rtbInfo.Text += info+"\r\n";
 
-            string paraInfo = GetRequestInfo("", info, "", "", "", "", "", "");
+            string paraInfo = "" ;
             if (!string.IsNullOrEmpty(info))
             {
                 #region 调取MES接口
@@ -930,19 +818,7 @@ namespace StriveEngine.BinaryDemoServer
             
         }
         #endregion
-        public string GetRequestInfo(string deviceCode, string sn,string step,string workcode,string line,string statusCode,string extendone,string extendtwo)
-        {
-            ScanBarCodeMesRequest request = new ScanBarCodeMesRequest();
-            request.DeviceCode = deviceCode;
-            request.SN = sn;
-            request.STEP = step;
-            request.WorkCode = workcode;
-            request.LineSort = line;
-            request.StatusCode = statusCode;
-            request.ExtendOne = extendone;
-            request.ExtendTwo = extendtwo;
-            return request.DeviceCode + "," + request.SN+","+request.STEP+","+request.WorkCode+","+request.LineSort+",,"+request.StatusCode+","+request.ExtendOne+","+request.ExtendTwo;
-        }
+      
 
 
         #region 日志消息队列处理
@@ -973,8 +849,10 @@ namespace StriveEngine.BinaryDemoServer
 
         #endregion
 
-     
 
+        #region 抓走操作实际
+        
+      
         private void button1_Click_2(object sender, EventArgs e)
         {
             if (lvIps.SelectedItems.Count == 0) return;
@@ -1096,7 +974,295 @@ namespace StriveEngine.BinaryDemoServer
             this.tcpServerEngine.PostMessageToClient(client, resMessage);
         }
 
+        #endregion
 
+
+  
+
+        private void ShowMsghomeControl(string msg)
+        {
+            if (this.InvokeRequired)
+            {
+                this.BeginInvoke(new CbDelegate<string>(this.ShowMsghomeControl), msg);
+            }
+            else
+            {
+                homeControl.rtbInfo.AppendText(DateTime.Now.ToString()+":"+msg + "\r\n");
+                LogHelper.Log(DateTime.Now.ToString() + ":" + msg);
+                Application.DoEvents();
+            }
+        }
+
+
+        /// <summary>
+        /// 加载位置信息
+        /// </summary>
+        private void LoadIOPos()
+        { 
+            //入料去区
+           
+
+            #region 加载入料区信息
+            
+
+            //加载1入料区
+            IOInfo infoOne = new IOInfo();
+            infoOne.AreaCode = "LIN";
+            infoOne.Code = "1";
+            //位置
+            IOPos  ioposOne=new IOPos();
+            ioposOne.LowPos = "X=284.275,Y=495.800,Z=323.899,U=179.721,V=-0.599,W=-179.446";//低端位置
+            ioposOne.HighPos="";//高端位置
+            infoOne.IoPosition = ioposOne;
+            infoOne.IoFlag = 1;
+            infoOne.i =2;
+            infoOne.j =0;
+            ioInfoList.Add(infoOne);
+
+ 
+
+
+
+
+            //加载2
+            IOInfo infoTwo = new IOInfo();
+            infoTwo.AreaCode = "LIN";
+            infoTwo.Code = "2";
+            //位置
+            IOPos ioposTwo = new IOPos();
+            ioposTwo.LowPos = "X=158.804,Y=495.800,Z=323.344,U=179.721,V=-0.599,W=-179.446";//低端位置
+            ioposTwo.HighPos = "";//高端位置
+            infoTwo.IoPosition = ioposTwo;
+            infoTwo.IoFlag = 1;
+
+            infoTwo.i = 1;
+            infoTwo.j = 3;
+
+            ioInfoList.Add(infoTwo);
+
+            //加载3
+            IOInfo infoThree= new IOInfo();
+            infoThree.AreaCode = "LIN";
+            infoThree.Code = "3";
+            //位置
+            IOPos ioposThree = new IOPos();
+            ioposThree.LowPos = "X=157.809,Y=722.095,Z=328.533,U=179.721,V=-0.600,W=-179.446";//低端位置
+            ioposThree.HighPos = "";//高端位置
+            infoThree.IoPosition = ioposThree;
+            infoThree.IoFlag = 1;
+
+            infoThree.i = 1;
+            infoThree.j = 2;
+
+            ioInfoList.Add(infoThree);
+
+
+            //加载4
+            IOInfo infoFour = new IOInfo();
+            infoFour.AreaCode = "LIN";
+            infoFour.Code = "4";
+            //位置
+            IOPos ioposFour = new IOPos();
+            ioposFour.LowPos = "X=282.637,Y=723.612,Z=329.961,U=179.720,V=-0.600,W=-179.446";//低端位置
+            ioposFour.HighPos = "";//高端位置
+            infoFour.IoPosition = ioposFour;
+            infoFour.IoFlag = 1;
+
+            infoFour.i = 1;
+            infoFour.j = 0;
+
+            ioInfoList.Add(infoFour);
+
+            #endregion
+
+            #region 加载1A区信息
+            //加载1A第一个格子信息
+            IOInfo info1AOne = new IOInfo();
+            info1AOne.AreaCode = "1A";
+            info1AOne.Code = "1";
+            //位置
+            IOPos iopos1AOne = new IOPos();
+            iopos1AOne.LowPos = "X=516.601,Y=55.497,Z=398.994,U=90.857,V=0.247,W=-178.960";//低端位置
+            iopos1AOne.HighPos = "X=516.601,Y=55.497,Z=398.994,U=90.857,V=0.247,W=-178.960";//高端位置
+            info1AOne.IoPosition = iopos1AOne;
+
+            info1AOne.i = 1;
+            info1AOne.j = 0;
+
+
+            ioInfoList.Add(info1AOne);
+
+            //加载1ATWO信息
+            IOInfo info1ATwo= new IOInfo();
+            info1ATwo.AreaCode = "1A";
+            info1ATwo.Code = "2";
+            //位置
+            IOPos iopos1ATwo = new IOPos();
+            iopos1ATwo.LowPos = "X=516.601,Y=-70.497,Z=398.994,U=90.857,V=0.247,W=-178.960";//低端位置
+            iopos1ATwo.HighPos = "X=516.601,Y=-70.497,Z=398.994,U=90.857,V=0.247,W=-178.960";//高端位置
+            info1ATwo.IoPosition = iopos1ATwo;
+            info1ATwo.i = 1;
+            info1ATwo.j =1;
+
+            ioInfoList.Add(info1ATwo);
+
+
+            #endregion
+
+            #region 加载2A区信息
+
+            IOInfo info2AOne = new IOInfo();
+            info2AOne.AreaCode = "2A";
+            info2AOne.Code = "1";
+            //位置
+            IOPos iopos2AOne = new IOPos();
+            iopos2AOne.LowPos = "X=505.032,Y=84.099,Z=257.127,U=91.143,V=0.247,W=-178.960";//低端位置
+            iopos2AOne.HighPos = "X=505.032,Y=84.099,Z=257.127,U=91.143,V=0.247,W=-178.960";//高端位置
+            info2AOne.IoPosition = iopos2AOne;
+
+            info2AOne.i = 0;
+            info2AOne.j = 0;
+
+            ioInfoList.Add(info2AOne);
+
+
+            IOInfo info2ATwo = new IOInfo();
+            info2ATwo.AreaCode = "2A";
+            info2ATwo.Code = "2";
+            //位置
+            IOPos iopos2ATwo = new IOPos();
+            iopos2ATwo.LowPos = "X=505.032,Y=-41.099,Z=257.127,U=91.143,V=0.247,W=-178.960";//低端位置
+            iopos2ATwo.HighPos = "X=505.032,Y=-41.099,Z=257.127,U=91.143,V=0.247,W=-178.960";//高端位置
+            info2ATwo.IoPosition = iopos2ATwo;
+            info2ATwo.i = 3;
+            info2ATwo.j =4;
+
+            ioInfoList.Add(info2ATwo);
+
+
+            IOInfo info2AThree= new IOInfo();
+            info2AThree.AreaCode = "2A";
+            info2AThree.Code = "3";
+            //位置
+            IOPos iopos2AThree = new IOPos();
+            iopos2AThree.LowPos = "X=505.032,Y=-166.099,Z=257.127,U=91.143,V=0.247,W=-178.960";//低端位置
+            iopos2AThree.HighPos = "X=505.032,Y=-166.099,Z=257.127,U=91.143,V=0.247,W=-178.960";//高端位置
+            info2AThree.IoPosition = iopos2AThree;
+
+            info2AThree.i = 0;
+            info2AThree.j = 2;
+
+            ioInfoList.Add(info2AThree);
+
+
+            IOInfo info2AFour = new IOInfo();
+            info2AFour.AreaCode = "2A";
+            info2AFour.Code = "4";
+            //位置
+            IOPos iopos2AFour= new IOPos();
+            iopos2AFour.LowPos = "X=505.032,Y=-291.099,Z=257.127,U=91.143,V=0.247,W=-178.960";//低端位置
+            iopos2AFour.HighPos = "X=505.032,Y=-291.099,Z=257.127,U=91.143,V=0.247,W=-178.960";//高端位置
+            info2AFour.IoPosition = iopos2AFour;
+            info2AFour.i = 0;
+            info2AFour.j = 3;
+
+            ioInfoList.Add(info2AFour);
+
+            #endregion
+
+            #region 加载出料区信息
+
+            IOInfo infoOutOne = new IOInfo();
+            infoOutOne.AreaCode = "LOUT";
+            infoOutOne.Code = "1";
+            //位置
+            IOPos ioposoutOne = new IOPos();
+            ioposoutOne.LowPos = "X=292.560,Y=-725.862,Z=334.467,U=1.469,V=0.525,W=-179.598";//低端位置
+            ioposoutOne.HighPos = "X=292.560,Y=-725.862,Z=334.467,U=1.469,V=0.525,W=-179.598";//高端位置
+            infoOutOne.IoPosition = ioposoutOne;
+
+            infoOutOne.i = 4;
+            infoOutOne.j = 0;
+
+            ioInfoList.Add(infoOutOne);
+
+            IOInfo infoOutTwo= new IOInfo();
+            infoOutTwo.AreaCode = "LOUT";
+            infoOutTwo.Code = "2";
+            //位置
+            IOPos ioposoutTwo = new IOPos();
+            ioposoutTwo.LowPos = "X=167.560,Y=-725.862,Z=334.467,U=1.469,V=0.525,W=-179.598";//低端位置
+            ioposoutTwo.HighPos = "X=167.560,Y=-725.862,Z=334.467,U=1.469,V=0.525,W=-179.598";//高端位置
+            infoOutTwo.IoPosition = ioposoutTwo;
+
+            infoOutTwo.i = 3;
+            infoOutTwo.j = 3;
+
+            ioInfoList.Add(infoOutTwo);
+
+
+            IOInfo infoOutThree = new IOInfo();
+            infoOutThree.AreaCode = "LOUT";
+            infoOutThree.Code = "3";
+            //位置
+            IOPos ioposoutThree = new IOPos();
+            ioposoutThree.LowPos = "X=167.560,Y=-499.862,Z=334.467,U=1.469,V=0.525,W=-179.598";//低端位置
+            ioposoutThree.HighPos = "X=167.560,Y=-499.862,Z=334.467,U=1.469,V=0.525,W=-179.598";//高端位置
+            infoOutThree.IoPosition = ioposoutThree;
+
+            infoOutThree.i = 4;
+            infoOutThree.j = 2;
+
+            ioInfoList.Add(infoOutThree);
+
+            IOInfo infoOutFour = new IOInfo();
+            infoOutFour.AreaCode = "LOUT";
+            infoOutFour.Code = "4";
+            //位置
+            IOPos ioposoutFour = new IOPos();
+            ioposoutFour.LowPos = "X=292.560,Y=-499.862,Z=334.467,U=1.469,V=0.525,W=-179.598";//低端位置
+            ioposoutFour.HighPos = "X=292.560,Y=-499.862,Z=334.467,U=1.469,V=0.525,W=-179.598";//高端位置
+            infoOutFour.IoPosition = ioposoutFour;
+
+            infoOutFour.i = 4;
+            infoOutFour.j = 3;
+
+
+            ioInfoList.Add(infoOutFour);
+
+
+
+            #endregion
+
+        }
+
+        private void LoadFctPos()
+        {
+
+
+            ScanerPos.Pos = "X=23.770,Y=496.962,Z=321.792,U=-179.877,V=-0.471,W=-179.230";
+            ScanerPos.MidPos = "X=23.770,Y=496.962,Z=400.792,U=-179.877,V=-0.471,W=-179.230";
+            ScanerPos.TakePos = "X=23.770,Y=496.962,Z=321.792,U=-179.877,V=-0.471,W=-179.230";
+
+            FctPos posOne = new FctPos();
+            posOne.IP = "10.5.32.103";
+            posOne.LowPos = "X=745.216,Y=15.529,Z=358.381,U=-0.132,V=0.364,W=-179.510";
+            posOne.HighPos = "X=745.216,Y=15.529,Z=358.381,U=-0.132,V=0.364,W=-179.510";
+            posOne.Pos = 0;
+            fctPosList.Add(posOne);
+
+
+            FctPos posTwo = new FctPos();
+            posTwo.IP = "10.5.32.202";
+            posTwo.LowPos = "X=759.425,Y=-198.176,Z=351.109,U=-0.463,V=-0.888,W=-179.926";
+            posTwo.HighPos = "X=759.425,Y=-198.176,Z=351.109,U=-0.463,V=-0.888,W=-179.926";
+            posTwo.Pos = 1000000;
+            fctPosList.Add(posTwo);
+         
+        }
+
+
+       
     }
 
 

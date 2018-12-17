@@ -21,8 +21,8 @@ namespace StriveEngine.BinaryDemo
             Application.SetCompatibleTextRenderingDefault(false);
             log4net.Config.XmlConfigurator.Configure();
 
-          //  Application.Run(new TcpClientForm());
-            Application.Run(new Form2());
+            Application.Run(new TcpClientFormTwo());
+            //Application.Run(new Form2());
         }
     }
 }

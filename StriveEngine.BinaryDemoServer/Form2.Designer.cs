@@ -103,6 +103,8 @@
             this.content = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.createTime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.btnZhuanAndPlace = new System.Windows.Forms.Button();
+            this.btnZhuaZou = new System.Windows.Forms.Button();
             this.button1 = new System.Windows.Forms.Button();
             this.rchInfo = new System.Windows.Forms.RichTextBox();
             this.button_Close = new System.Windows.Forms.Button();
@@ -116,13 +118,14 @@
             this.button_StartListen = new System.Windows.Forms.Button();
             this.textBox_port = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.tabPage6 = new System.Windows.Forms.TabPage();
+            this.panel2 = new System.Windows.Forms.Panel();
             this.toolStripLabel_event = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel_clientCount = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.toolStripLabel_Port = new System.Windows.Forms.ToolStripLabel();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.btnZhuaZou = new System.Windows.Forms.Button();
-            this.btnZhuanAndPlace = new System.Windows.Forms.Button();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -141,6 +144,7 @@
             ((System.ComponentModel.ISupportInitialize)(this.dgvLog)).BeginInit();
             this.tabPage1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.tabPage6.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -170,10 +174,12 @@
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage6);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage1);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tabControl1.Location = new System.Drawing.Point(0, 0);
             this.tabControl1.Name = "tabControl1";
@@ -783,7 +789,6 @@
             this.btnEnd.TabIndex = 5;
             this.btnEnd.Text = "末页";
             this.btnEnd.UseVisualStyleBackColor = true;
-            this.btnEnd.Click += new System.EventHandler(this.btnEnd_Click);
             // 
             // btnNext
             // 
@@ -793,7 +798,6 @@
             this.btnNext.TabIndex = 5;
             this.btnNext.Text = "下一页";
             this.btnNext.UseVisualStyleBackColor = true;
-            this.btnNext.Click += new System.EventHandler(this.btnNext_Click);
             // 
             // btnPre
             // 
@@ -803,7 +807,6 @@
             this.btnPre.TabIndex = 5;
             this.btnPre.Text = "上一页";
             this.btnPre.UseVisualStyleBackColor = true;
-            this.btnPre.Click += new System.EventHandler(this.btnPre_Click);
             // 
             // btnFirst
             // 
@@ -813,7 +816,6 @@
             this.btnFirst.TabIndex = 5;
             this.btnFirst.Text = "首页";
             this.btnFirst.UseVisualStyleBackColor = true;
-            this.btnFirst.Click += new System.EventHandler(this.btnFirst_Click);
             // 
             // btnSearch
             // 
@@ -823,7 +825,6 @@
             this.btnSearch.TabIndex = 4;
             this.btnSearch.Text = "查询";
             this.btnSearch.UseVisualStyleBackColor = true;
-            this.btnSearch.Click += new System.EventHandler(this.btnSearch_Click);
             // 
             // dtEnd
             // 
@@ -953,6 +954,26 @@
             this.tabPage1.Text = "客户端状态";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // btnZhuanAndPlace
+            // 
+            this.btnZhuanAndPlace.Location = new System.Drawing.Point(794, 15);
+            this.btnZhuanAndPlace.Name = "btnZhuanAndPlace";
+            this.btnZhuanAndPlace.Size = new System.Drawing.Size(75, 23);
+            this.btnZhuanAndPlace.TabIndex = 25;
+            this.btnZhuanAndPlace.Text = "抓走并放置";
+            this.btnZhuanAndPlace.UseVisualStyleBackColor = true;
+            this.btnZhuanAndPlace.Click += new System.EventHandler(this.btnZhuanAndPlace_Click);
+            // 
+            // btnZhuaZou
+            // 
+            this.btnZhuaZou.Location = new System.Drawing.Point(697, 14);
+            this.btnZhuaZou.Name = "btnZhuaZou";
+            this.btnZhuaZou.Size = new System.Drawing.Size(75, 23);
+            this.btnZhuaZou.TabIndex = 24;
+            this.btnZhuaZou.Text = "抓走";
+            this.btnZhuaZou.UseVisualStyleBackColor = true;
+            this.btnZhuaZou.Click += new System.EventHandler(this.btnZhuaZou_Click);
+            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(513, 16);
@@ -1071,23 +1092,52 @@
             this.label1.Text = "监听端口：";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleRight;
             // 
+            // tabPage5
+            // 
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(1098, 469);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "演示";
+            this.tabPage5.UseVisualStyleBackColor = true;
+            // 
+            // tabPage6
+            // 
+            this.tabPage6.Controls.Add(this.panel2);
+            this.tabPage6.Location = new System.Drawing.Point(4, 22);
+            this.tabPage6.Name = "tabPage6";
+            this.tabPage6.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage6.Size = new System.Drawing.Size(1098, 469);
+            this.tabPage6.TabIndex = 5;
+            this.tabPage6.Text = "监控主页";
+            this.tabPage6.UseVisualStyleBackColor = true;
+            // 
+            // panel2
+            // 
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel2.Location = new System.Drawing.Point(3, 3);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(1092, 463);
+            this.panel2.TabIndex = 0;
+            // 
             // toolStripLabel_event
             // 
             this.toolStripLabel_event.Name = "toolStripLabel_event";
-            this.toolStripLabel_event.Size = new System.Drawing.Size(17, 22);
+            this.toolStripLabel_event.Size = new System.Drawing.Size(18, 22);
             this.toolStripLabel_event.Text = "--";
             // 
             // toolStripLabel_clientCount
             // 
             this.toolStripLabel_clientCount.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripLabel_clientCount.Name = "toolStripLabel_clientCount";
-            this.toolStripLabel_clientCount.Size = new System.Drawing.Size(71, 22);
+            this.toolStripLabel_clientCount.Size = new System.Drawing.Size(75, 22);
             this.toolStripLabel_clientCount.Text = "在线数量：0";
             // 
             // toolStripLabel1
             // 
             this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(65, 22);
+            this.toolStripLabel1.Size = new System.Drawing.Size(68, 22);
             this.toolStripLabel1.Text = "监听端口：";
             // 
             // toolStripLabel_Port
@@ -1109,26 +1159,6 @@
             this.toolStrip1.Size = new System.Drawing.Size(1106, 25);
             this.toolStrip1.TabIndex = 7;
             this.toolStrip1.Text = "toolStrip1";
-            // 
-            // btnZhuaZou
-            // 
-            this.btnZhuaZou.Location = new System.Drawing.Point(697, 14);
-            this.btnZhuaZou.Name = "btnZhuaZou";
-            this.btnZhuaZou.Size = new System.Drawing.Size(75, 23);
-            this.btnZhuaZou.TabIndex = 24;
-            this.btnZhuaZou.Text = "抓走";
-            this.btnZhuaZou.UseVisualStyleBackColor = true;
-            this.btnZhuaZou.Click += new System.EventHandler(this.btnZhuaZou_Click);
-            // 
-            // btnZhuanAndPlace
-            // 
-            this.btnZhuanAndPlace.Location = new System.Drawing.Point(794, 15);
-            this.btnZhuanAndPlace.Name = "btnZhuanAndPlace";
-            this.btnZhuanAndPlace.Size = new System.Drawing.Size(75, 23);
-            this.btnZhuanAndPlace.TabIndex = 25;
-            this.btnZhuanAndPlace.Text = "抓走并放置";
-            this.btnZhuanAndPlace.UseVisualStyleBackColor = true;
-            this.btnZhuanAndPlace.Click += new System.EventHandler(this.btnZhuanAndPlace_Click);
             // 
             // Form2
             // 
@@ -1164,6 +1194,7 @@
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
+            this.tabPage6.ResumeLayout(false);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -1267,6 +1298,9 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button btnZhuaZou;
         private System.Windows.Forms.Button btnZhuanAndPlace;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage tabPage6;
+        private System.Windows.Forms.Panel panel2;
     }
 }
 

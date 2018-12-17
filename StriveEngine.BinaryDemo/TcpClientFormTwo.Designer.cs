@@ -79,7 +79,7 @@
             this.tbMsg.Name = "tbMsg";
             this.tbMsg.Size = new System.Drawing.Size(396, 21);
             this.tbMsg.TabIndex = 4;
-            this.tbMsg.Text = "MC9K-TR-FCT-1,M2MB999999990,1,M009287,MC9K-TR,,OK,";
+            this.tbMsg.Text = "SENTRY-T2-5,H0699232610-17331K1092,1,M009287,SENTRY,,OK,,";
             // 
             // button2
             // 
@@ -99,7 +99,7 @@
             this.richTextBox1.TabIndex = 6;
             this.richTextBox1.Text = "";
             // 
-            // TcpClientForm
+            // TcpClientFormTwo
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -111,7 +111,7 @@
             this.Controls.Add(this.btnConnect);
             this.Controls.Add(this.tbPort);
             this.Controls.Add(this.tbIp);
-            this.Name = "TcpClientForm";
+            this.Name = "TcpClientFormTwo";
             this.Text = "TcpClientForm";
             this.Load += new System.EventHandler(this.TcpClientForm_Load);
             this.ResumeLayout(false);

@@ -21,9 +21,38 @@ namespace StriveEngine.BinaryDemoServer
             this.labelname.Text = text;
         }
 
-        public void SetMsg(string msg)
+        public void SetOnLineStatus(string msg)
         {
-            this.lbMsg.Text = msg;
+            if (this.InvokeRequired)
+            {
+                lbStatus.Invoke((MethodInvoker)delegate {
+                    this.lbStatus.Text = msg;
+                });
+            }
+            else
+            {
+                this.lbStatus.Text = msg;
+            }
+            
         }
+
+        public void SetPcName(string name)
+        {
+            
+            if (this.InvokeRequired)
+            {
+                lbStatus.Invoke((MethodInvoker)delegate
+                {
+                    labelname.Text = name;
+                });
+            }
+            else
+            {
+                labelname.Text = name;
+            }
+            
+        }
+
+       
     }
 }

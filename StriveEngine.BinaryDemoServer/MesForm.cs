@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Atms.Common;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -6,6 +7,7 @@ using System.Drawing;
 using System.IO.Ports;
 using System.Linq;
 using System.Text;
+using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace StriveEngine.BinaryDemoServer
@@ -149,6 +151,31 @@ namespace StriveEngine.BinaryDemoServer
             for (int i = 0; i < returnBytes.Length; i++)
                 returnBytes[i] = Convert.ToByte(hexString.Substring(i * 2, 2), 16);
             return returnBytes;
+        }
+
+        private bool isone = false;
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Task.Factory.StartNew(() => {
+                while (true)
+                {
+                    if (isone)
+                    {
+                        return;
+                    }
+                    Console.WriteLine("11");
+                    System.Threading.Thread.Sleep(2000);
+                }
+
+                Console.WriteLine("1");
+            });
+
+       
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            isone = true;
         }
 
     }

@@ -16,6 +16,7 @@ using StriveEngine.BinaryDemoServer.Model;
 using System.Timers;
 using System.IO.Ports;
 using System.Configuration;
+using Atms.Common;
 namespace StriveEngine.BinaryDemoServer
 {
 
@@ -483,18 +484,6 @@ namespace StriveEngine.BinaryDemoServer
                      curIpDevInfo=result.FirstOrDefault();
                 }
 
-
-
-                this.lvIps.Items.Clear();
-                for (int i = 0; i < clientInfos.Count; i++)
-                {
-                    ListViewItem itemIp = new ListViewItem(new string[] {clientInfos[i].Name,clientInfos[i].Code, clientInfos[i].IpPoint.ToString(), clientInfos[i].StateDes });
-                    this.lvIps.Items.Insert(0, itemIp);
-                }
-
-                this.toolStripLabel_event.Text = ipe.ToString()+msg;
-                string msgText = curIpDevInfo.Name + "--" + curIpDevInfo.Code+"--"+ipe.ToString()+":"+msg;;
-                this.rchInfo.AppendText(msgText+"\r\n");
             }
         }
 
@@ -754,7 +743,7 @@ namespace StriveEngine.BinaryDemoServer
         private void Form1_Load(object sender, EventArgs e)
         {
 
-            SeverInfo.DeviceCode = ConfigurationManager.AppSettings["devicecode"];
+            RobotInfo.DeviceCode = ConfigurationManager.AppSettings["devicecode"];
 
             List<ClientIpInfoModel> list = new List<ClientIpInfoModel>();
             DataTable dt = new ClientInfoDal().GetDS();

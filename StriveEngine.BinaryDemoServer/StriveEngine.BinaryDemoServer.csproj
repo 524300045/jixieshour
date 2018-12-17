@@ -34,12 +34,53 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="AdvMotAPI, Version=2.0.2.4, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\AdvMotAPI.dll</HintPath>
+    </Reference>
+    <Reference Include="Aga.Controls">
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\Aga.Controls.dll</HintPath>
+    </Reference>
+    <Reference Include="Aspose.Cells, Version=17.7.0.0, Culture=neutral, PublicKeyToken=9269011db29d841b, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\Aspose.Cells.dll</HintPath>
+    </Reference>
+    <Reference Include="ComponentFactory.Krypton.Toolkit, Version=4.4.0.0, Culture=neutral, PublicKeyToken=a87e673e9ecb6e8e, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\ComponentFactory.Krypton.Toolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="FwCore, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\FwCore.dll</HintPath>
+    </Reference>
+    <Reference Include="FwForm">
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\FwForm.dll</HintPath>
+    </Reference>
+    <Reference Include="ICSharpCode.SharpZipLib, Version=0.86.0.518, Culture=neutral, PublicKeyToken=1b03e6acf1164f73, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\ICSharpCode.SharpZipLib.dll</HintPath>
+    </Reference>
+    <Reference Include="Leafing.Core, Version=5.0.0.22134, Culture=neutral, PublicKeyToken=3eacc2a29b11f14a, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\Leafing.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Leafing.Data, Version=5.0.0.22135, Culture=neutral, PublicKeyToken=d77bbd87a80780b6, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\Leafing.Data.dll</HintPath>
+    </Reference>
     <Reference Include="log4net">
       <HintPath>..\dll\log4net.dll</HintPath>
     </Reference>
     <Reference Include="MySql.Data, Version=6.9.8.0, Culture=neutral, PublicKeyToken=c5687fc88969c44d, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\dll\MySql.Data.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="SourceGrid">
+      <HintPath>..\..\Huang\PdaTester\bin\Debug\SourceGrid.dll</HintPath>
     </Reference>
     <Reference Include="StriveEngine">
       <HintPath>..\Resources\StriveEngine.dll</HintPath>
@@ -69,7 +110,6 @@
     <Compile Include="AddIPForm.Designer.cs">
       <DependentUpon>AddIPForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="ClientInfo.cs" />
     <Compile Include="Dal\ClientInfoDal.cs" />
     <Compile Include="Form2.cs">
       <SubType>Form</SubType>
@@ -84,7 +124,6 @@
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
     <Compile Include="HexConvert.cs" />
-    <Compile Include="LogHelper.cs" />
     <Compile Include="LoginForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -110,7 +149,19 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SeverInfo.cs" />
+    <Compile Include="RobotUserControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="RobotUserControl.Designer.cs">
+      <DependentUpon>RobotUserControl.cs</DependentUpon>
+    </Compile>
+    <Compile Include="RobotInfo.cs" />
+    <Compile Include="TestPCControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="TestPCControl.Designer.cs">
+      <DependentUpon>TestPCControl.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="EditIPForm.resx">
       <DependentUpon>EditIPForm.cs</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +195,12 @@
       <DependentUpon>Resources.resx</DependentUpon>
       <DesignTime>True</DesignTime>
     </Compile>
+    <EmbeddedResource Include="RobotUserControl.resx">
+      <DependentUpon>RobotUserControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestPCControl.resx">
+      <DependentUpon>TestPCControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="app.config" />
     <None Include="log4net.config">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
@@ -160,6 +217,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\..\Huang\PdaTester\PdaTester.csproj">
+      <Project>{0688bb46-8f06-43f7-978f-5ade5fad3172}</Project>
+      <Name>PdaTester</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Atms.Common\Atms.Common.csproj">
+      <Project>{10eab070-bd2e-4a49-abde-44e3dc3b0bbc}</Project>
+      <Name>Atms.Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\StriveEngine.BinaryDemoCore\StriveEngine.BinaryDemoCore.csproj">
       <Project>{CD40EC4D-E380-4BE7-A9B3-CCE1087F22E2}</Project>
       <Name>StriveEngine.BinaryDemoCore</Name>
