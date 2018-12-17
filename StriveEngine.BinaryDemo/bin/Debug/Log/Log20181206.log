@@ -1,0 +1,52 @@
+????：2018-12-06 16:18:22,758 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1099,1,M009287,SENTRY,,OK,,
+????：2018-12-06 16:18:22,805 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T3 
+????：2018-12-06 16:19:16,514 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1099,1,M009287,SENTRY,,OK,,
+????：2018-12-06 16:19:16,560 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T3 
+????：2018-12-06 20:08:02,250 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1091,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:08:02,282 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:08:06,221 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:08:06,256 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:08:15,637 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1093,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:08:15,673 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:08:20,957 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1094,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:08:20,995 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T3 
+????：2018-12-06 20:08:26,973 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1095,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:08:27,009 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:08:32,421 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1096,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:08:32,455 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:08:37,181 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1097,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:08:37,218 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:08:42,173 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1098,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:08:42,209 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:08:48,936 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1099,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:08:48,971 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T3 
+????：2018-12-06 20:14:05,024 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:14:05,055 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T1 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:14:10,626 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1093,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:14:10,660 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T1 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:15:26,689 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1093,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:15:26,726 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:15:31,155 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1091,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:15:31,201 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T1 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:17:16,034 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1091,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:17:16,069 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:20:46,898 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1091,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:20:46,933 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:20:51,032 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1095,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:20:51,074 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:20:54,739 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1096,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:20:54,774 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T1 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:20:58,645 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1099,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:20:58,687 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=1A
+????：2018-12-06 20:21:07,248 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1099,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:21:07,290 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=1A
+????：2018-12-06 20:21:12,032 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1098,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:21:12,075 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:23:40,559 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1091,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:23:40,596 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:23:48,800 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:23:48,834 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR
+????：2018-12-06 20:23:55,207 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1099,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:23:55,250 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=1A
+????：2018-12-06 20:24:02,463 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1097,1,M009287,SENTRY,,OK,,
+????：2018-12-06 20:24:02,499 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR

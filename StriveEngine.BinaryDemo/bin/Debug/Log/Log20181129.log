@@ -1,0 +1,53 @@
+????：2018-11-29 16:09:04,318 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:MC9K-TR-FCT-1,M2MB999999990,1,M009287,MC9K-TR,,OK,
+????：2018-11-29 16:09:04,365 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,PBOX 
+????：2018-11-29 16:10:19,728 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K0006,1,M009287,SENTRY,,OK,
+????：2018-11-29 16:10:19,760 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T4-1 
+????：2018-11-29 16:10:47,153 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K0006,1,M009287,SENTRY,,OK,,
+????：2018-11-29 16:10:47,200 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T4-1 
+????：2018-11-29 16:12:10,395 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K0006,1,M009287,SENTRY,,OK,,
+????：2018-11-29 16:12:10,426 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T4-1 
+????：2018-11-29 16:12:44,840 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1091,1,M009287,SENTRY,,OK,,
+????：2018-11-29 16:12:44,887 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T4-1 
+????：2018-11-29 16:15:42,212 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,1,M009287,SENTRY,,OK,,
+????：2018-11-29 16:15:42,243 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T4-1 
+????：2018-11-29 16:24:32,894 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：SocketExceptionSystem.Net.Sockets.SocketException (0x80004005): 由于?接方在一段??后?有正确答复或?接的主机?有反?，?接??失?。 10.5.10.18:21347
+   在 System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   在 StriveEngine.BinaryDemo.TcpClientFormTwo.Connect(String server, String message, Int32 port) 位置 d:\jixieshou\jixieshour\StriveEngine.BinaryDemo\TcpClientFormTwo.cs:行? 102
+????：2018-11-29 16:26:38,825 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,1,M009287,SENTRY,,OK,,
+????：2018-11-29 16:26:38,857 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=1A
+????：2018-11-29 16:31:19,423 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-1,H0699232610-17331K1092,2,M009287,SENTRY,,FAIL,1,LCD01
+????：2018-11-29 16:31:19,485 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK2
+????：2018-11-29 16:32:26,300 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,1,M009287,SENTRY,,OK,,
+????：2018-11-29 16:32:26,347 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=2A
+????：2018-11-29 16:50:36,452 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1093,1,M009287,SENTRY,,OK,,
+????：2018-11-29 16:50:36,498 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=1A
+????：2018-11-29 16:53:18,551 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,1,M009287,SENTRY,,OK,,
+????：2018-11-29 16:53:18,614 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=2A
+????：2018-11-29 16:53:31,172 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,2,M009287,SENTRY,,OK,,
+????：2018-11-29 16:53:31,250 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK2
+????：2018-11-29 16:55:22,665 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,1,M009287,SENTRY,,FAIL,1,LCD01
+????：2018-11-29 16:55:22,712 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=2A
+????：2018-11-29 16:55:29,467 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1092,2,M009287,SENTRY,,FAIL,1,LCD01
+????：2018-11-29 16:55:29,545 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK2
+????：2018-11-29 17:13:54,292 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-1,H0699232610-17331K1094,2,M009287,SENTRY,,OK,,
+????：2018-11-29 17:13:54,339 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK2
+????：2018-11-29 17:14:43,495 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-1,H0699232610-17331K1094,1,M009287,SENTRY,,OK,,
+????：2018-11-29 17:14:43,542 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,T3 
+????：2018-11-29 17:25:38,337 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-1,H0699232610-17331K1095,2,M009287,SENTRY,,FAIL,1,LCD01
+????：2018-11-29 17:25:38,431 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK2
+????：2018-11-29 17:25:53,781 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-1,H0699232610-17331K1095,1,M009287,SENTRY,,FAIL,1,LCD01
+????：2018-11-29 17:25:53,828 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,2A SAME STATION
+????：2018-11-29 17:26:17,072 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-1,H0699232610-17331K1095,1,M009287,SENTRY,,OK,,
+????：2018-11-29 17:26:17,119 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,2A SAME STATION
+????：2018-11-29 17:26:34,357 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1095,1,M009287,SENTRY,,OK,,
+????：2018-11-29 17:26:34,419 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=2A
+????：2018-11-29 17:27:08,802 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-2,H0699232610-17331K1092,2,M009287,SENTRY,,FAIL,1,LCD01
+????：2018-11-29 17:27:08,833 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL2,2A_TEST_HIS NOTFOUND
+????：2018-11-29 17:28:04,104 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-2,H0699232610-17331K1095,1,M009287,SENTRY,,OK,,
+????：2018-11-29 17:28:04,166 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=2A
+????：2018-11-29 17:28:36,115 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-2,H0699232610-17331K1095,1,M009287,SENTRY,,FAIL,1,LCD01
+????：2018-11-29 17:28:36,162 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK1,REWORK=0 RETEST=2A
+????：2018-11-29 17:28:49,687 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-2,H0699232610-17331K1095,2,M009287,SENTRY,,FAIL,1,LCD01
+????：2018-11-29 17:28:49,734 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:OK2
+????：2018-11-29 17:29:16,098 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Connect:SENTRY-T2-5,H0699232610-17331K1095,1,M009287,SENTRY,,OK,,
+????：2018-11-29 17:29:16,145 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：Received:FAIL1,DIALOG=T2 OK. T2 FAIL AND GOTO T2R TO REPAIR

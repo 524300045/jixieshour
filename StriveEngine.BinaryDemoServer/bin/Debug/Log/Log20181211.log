@@ -1,0 +1,43 @@
+﻿记录时间：2018-12-11 10:08:04,889 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 10:32:51,543 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 10:51:49,827 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 15:28:03,780 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 15:30:05,834 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 15:31:44,373 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 15:32:35,571 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 15:45:51,746 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 15:51:00,158 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:51:00:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 15:51:00,158 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:51:00:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 15:51:34,451 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:51:34:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 15:51:34,451 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:51:34:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 15:51:47,867 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:51:47:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 15:51:47,867 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:51:47:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 15:53:01,453 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:53:01:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 15:53:01,453 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:53:01:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 15:53:58,580 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:53:58:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 15:53:58,580 线程ID:[8] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:53:58:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 15:55:08,230 线程ID:[11] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 15:56:13,551 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 15:59:22,983 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:59:22:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 15:59:22,983 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:59:22:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 15:59:34,183 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:59:34:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 15:59:34,183 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 15:59:34:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 16:04:37,135 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 16:04:58,429 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:04:58:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 16:04:58,429 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:04:58:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 16:09:06,103 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:09:06:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 16:09:06,103 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:09:06:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 16:10:47,347 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:10:47:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 16:10:47,347 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:10:47:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 16:11:21,168 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:11:21:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 16:11:21,168 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:11:21:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 16:11:32,135 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:11:32:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 16:11:32,135 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:11:32:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 16:11:37,829 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:11:37:收到10.5.32.103ClientSendReady的请求
+记录时间：2018-12-11 16:11:37,829 线程ID:[10] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:11:37:向客户端回复10.5.32.103ReceiveClientReady的请求
+记录时间：2018-12-11 16:13:55,086 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动
+记录时间：2018-12-11 16:16:58,986 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:16:58:收到10.5.32.103ClientSendTestFinished的请求,H0699552010-17306K0006,FAIL
+记录时间：2018-12-11 16:16:58,990 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:16:58:向客户端回复10.5.32.103ServerReceiveTestFinished的请求
+记录时间：2018-12-11 16:18:04,752 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:18:04:收到10.5.32.103ClientSendTestFinished的请求,H0699552010-17306K0006,FAIL
+记录时间：2018-12-11 16:18:04,752 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：2018/12/11 16:18:04:向客户端回复10.5.32.103ServerReceiveTestFinished的请求
+记录时间：2018-12-11 16:35:26,325 线程ID:[9] 日志级别：ERROR 类：Log property:[(null)] - 描述：程序启动

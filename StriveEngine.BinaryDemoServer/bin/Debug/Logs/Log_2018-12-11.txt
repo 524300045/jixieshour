@@ -1,0 +1,2 @@
+FwCore.Act-Log:
+对端口“COM1”的访问被拒绝。

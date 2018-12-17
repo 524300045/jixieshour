@@ -1,0 +1,6 @@
+????：2018-11-09 10:36:52,688 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：1
+????：2018-11-09 10:37:17,259 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：SocketExceptionSystem.Net.Sockets.SocketException: 由于?接方在一段??后?有正确答复或?接的主机?有反?，?接??失?。 10.5.10.18:21347
+   在 System.Net.Sockets.TcpClient..ctor(String hostname, Int32 port)
+   在 StriveEngine.BinaryDemo.TcpClientForm.Connect(String server, String message, Int32 port) 位置 d:\soft\jixieshou\jixieshour\StriveEngine.BinaryDemo\TcpClientForm.cs:行? 102
+????：2018-11-09 10:38:01,548 ?程ID:[10] 日志??：ERROR ?：Log property:[(null)] - 描述：1
+????：2018-11-09 10:38:29,100 ?程ID:[9] 日志??：ERROR ?：Log property:[(null)] - 描述：1
