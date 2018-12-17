@@ -57,3 +57,9 @@ D:\1205\jixieshour\StriveEngine.BinaryDemoCore\bin\Debug\StriveEngine.dll
 D:\1205\jixieshour\StriveEngine.BinaryDemoCore\bin\Debug\StriveEngine.xml
 D:\1205\jixieshour\StriveEngine.BinaryDemoCore\obj\Debug\StriveEngine.BinaryDemoCore.dll
 D:\1205\jixieshour\StriveEngine.BinaryDemoCore\obj\Debug\StriveEngine.BinaryDemoCore.pdb
+D:\jixieshou\jixieshou1217\jixieshour\StriveEngine.BinaryDemoCore\bin\Debug\StriveEngine.BinaryDemoCore.dll
+D:\jixieshou\jixieshou1217\jixieshour\StriveEngine.BinaryDemoCore\bin\Debug\StriveEngine.BinaryDemoCore.pdb
+D:\jixieshou\jixieshou1217\jixieshour\StriveEngine.BinaryDemoCore\bin\Debug\StriveEngine.dll
+D:\jixieshou\jixieshou1217\jixieshour\StriveEngine.BinaryDemoCore\bin\Debug\StriveEngine.xml
+D:\jixieshou\jixieshou1217\jixieshour\StriveEngine.BinaryDemoCore\obj\Debug\StriveEngine.BinaryDemoCore.dll
+D:\jixieshou\jixieshou1217\jixieshour\StriveEngine.BinaryDemoCore\obj\Debug\StriveEngine.BinaryDemoCore.pdb

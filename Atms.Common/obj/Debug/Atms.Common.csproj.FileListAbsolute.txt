@@ -32,3 +32,8 @@ D:\1205\jixieshour\Atms.Common\bin\Debug\Atms.Common.pdb
 D:\1205\jixieshour\Atms.Common\bin\Debug\log4net.dll
 D:\1205\jixieshour\Atms.Common\obj\Debug\Atms.Common.dll
 D:\1205\jixieshour\Atms.Common\obj\Debug\Atms.Common.pdb
+D:\jixieshou\jixieshou1217\jixieshour\Atms.Common\bin\Debug\Atms.Common.dll
+D:\jixieshou\jixieshou1217\jixieshour\Atms.Common\bin\Debug\Atms.Common.pdb
+D:\jixieshou\jixieshou1217\jixieshour\Atms.Common\bin\Debug\log4net.dll
+D:\jixieshou\jixieshou1217\jixieshour\Atms.Common\obj\Debug\Atms.Common.dll
+D:\jixieshou\jixieshou1217\jixieshour\Atms.Common\obj\Debug\Atms.Common.pdb
